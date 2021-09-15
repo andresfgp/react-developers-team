@@ -9,12 +9,14 @@
 Este proyecto busca afianzar los conocimientos de lógica de programación e implementar el uso de metodologías útiles para trabajar en equipo de manera más fluida, ágil y entretenida.
 
 En resumen, busca:
-> Mejorar el conocimiento en metodologías ágiles como Scrum para el desarrollo de aplicaciones.
-> Crear interfaces gráficas para una experiencia superior de los usuarios.
-> Aumentar la seguridad de las aplicaciones.
-> Utilizar protocolos de comunicación para consumir servicios web.
-> Usar plataformas para realizar despliegues de artefactos construidos.
-> Administrar y gestionar las fuentes del entorno de desarrollo para compartirlas con el equipo de trabajo.
+```
+1. Mejorar el conocimiento en metodologías ágiles como Scrum para el desarrollo de aplicaciones.
+2. Crear interfaces gráficas para una experiencia superior de los usuarios.
+3. Aumentar la seguridad de las aplicaciones.
+4. Utilizar protocolos de comunicación para consumir servicios web.
+5. Usar plataformas para realizar despliegues de artefactos construidos.
+6. Administrar y gestionar las fuentes del entorno de desarrollo para compartirlas con el equipo de trabajo.
+```
 
 ## Technologies
 ***
