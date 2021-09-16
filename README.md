@@ -43,4 +43,4 @@ $ npm start
 
 > Norberto Medina
 
-> Francisco Javier
+> Francisco Javier: 31 años. Tengo estudios aplazados en Filología en español y lenguas clasicas (VI Sem). Sin embargo siempre he estado interesado en aprender a programar. Mi inclinación esta más por el lado de analisis de datos, e inteligencia artificial, pero tengo todas las ganas de aprender lo que más pueda de desarrollo en Mision Tic. Hace unos tres meses empece a estudiar lenguage pyhton en coursera.
