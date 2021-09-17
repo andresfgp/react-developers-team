@@ -41,6 +41,6 @@ $ npm start
 
 > Juan Sebastian
 
-> Norberto Medina
+> Norberto Medina: Soy delineante de arquitectura desde hace 17 años, tengo 39, hace algunos años estuve aprendiendo lenguaje C y ahora con mision tic 2022 mi objetivo es cambiar de campo laboral, mi intension es fusionar lo aprendido en todo este recorrido como dibujante con el diseño de aplicaciones web, y porque nó, adentrarme tambien en las aplicaciones moviles.
 
 > Francisco Javier
