@@ -1,12 +1,27 @@
 import React from 'react'
 // import { Link } from 'react-router-dom';
 import '../assets/styles/containers/Home.scss';
+import Search from '../components/Search';
 
-const Home = () => {
+const Home = (props) => {
+
+    const handleOnClick = (e) => {
+        props.history.push('/newSale');
+      };
+    
     return (
-        <div>
-            {/* <Link to='/login'>Login</Link> */}
-        </div>
+        <>
+            <Search />
+            <div className='sales__container'>
+                <div className='sales__container-btn'>
+                    <button onClick={handleOnClick}>+</button>
+                </div>
+
+                <div className='sales__list'>
+                    {/* insertar codigo aqui para mostrar ventas */}
+                </div>
+            </div>
+        </>
     )
 }
 

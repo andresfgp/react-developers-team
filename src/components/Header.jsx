@@ -27,11 +27,6 @@ const Header = () => {
                 </Link>
               </li>
               <li>
-                <Link to='/registerSale'>
-                  Register Sale
-                </Link>
-              </li>
-              <li>
                 <Link to='/modal'>
                   Modal
                 </Link>

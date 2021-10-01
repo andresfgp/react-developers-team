@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Layout from '../components/Layout';
 import Login from '../containers/Login';
 import Register from '../containers/Register';
-import RegisterSale from '../containers/RegisterSale';
+import NewSale from '../containers/NewSale';
 import Modal from '../containers/Modal';
 import Home from '../containers/Home';
 import '../assets/styles/App.scss';
@@ -17,7 +17,7 @@ const App = () => {
           <Route exact path='/' component={Home} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/register' component={Register} />
-          <Route exact path='/registerSale' component={RegisterSale} />
+          <Route exact path='/newSale' component={NewSale} />
           <Route exact path='/modal' component={Modal} />
         </Switch>
       </Layout>
