@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../assets/styles/containers/Login.css';
+import '../assets/styles/containers/Register.css';
 
-const Login = (props) => {
+const Register = (props) => {
   const [form, setValues] = useState({
+    name: '',
     email: '',
     password: '',
+    user:'',
   });
+
 
   const handleInput = (event) => { //recopilar informacion de formulario
     setValues({
@@ -23,10 +26,17 @@ const Login = (props) => {
 
   return (
     <>
-      <section className='login'>
-        <section className='login__container'>
-          <h2>Inicia sesión</h2>
-          <form className='login__container--form' onSubmit={handleSubmit}>
+      <section className='register'>
+        <section className='register__container'>
+          <h2>Regístrate</h2>
+          <form className='register__container--form' onSubmit={handleSubmit}>
+            <input
+              name='name'
+              className='input'
+              type='text'
+              placeholder='Nombre'
+              onChange={handleInput}
+            />
             <input
               name='email'
               className='input'
@@ -41,14 +51,14 @@ const Login = (props) => {
               placeholder='Contraseña'
               onChange={handleInput}
             />
+            <select name="user" onChange={handleInput}>
+              <option value="vendedor">Vendedor</option> 
+              <option value="administrador">Administrador</option> 
+            </select>
             {/* eslint-disable-next-line react/button-has-type */}
-            <button className='button'>Iniciar sesión</button>
+            <button className='button' type='submit'>Registrarme</button>
           </form>
-          <p className='login__container--register'>
-            No tienes ninguna cuenta
-            {' '}
-            <Link to='/register'>Regístrate</Link>
-          </p>
+          <Link to='/login'>Iniciar sesión</Link>
         </section>
       </section>
     </>
@@ -56,4 +66,4 @@ const Login = (props) => {
 };
 
 
-export default Login;
+export default Register;

@@ -17,8 +17,23 @@ const Header = () => {
             </div>
             <ul>
               <li>
+                <Link to='/'>
+                  Home
+                </Link>
+              </li>
+              <li>
                 <Link to='/login'>
                   Login
+                </Link>
+              </li>
+              <li>
+                <Link to='/registerSale'>
+                  Register Sale
+                </Link>
+              </li>
+              <li>
+                <Link to='/modal'>
+                  Modal
                 </Link>
               </li>
             </ul>
