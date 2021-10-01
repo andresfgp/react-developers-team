@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../assets/styles/containers/Register.css';
+import '../assets/styles/containers/Register.scss';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import '../assets/styles/Vars.scss';
 
 const Register = (props) => {
   const [form, setValues] = useState({
@@ -17,11 +19,10 @@ const Register = (props) => {
       [event.target.name]: event.target.value,
     });
   };
-
   const handleSubmit = (event) => { // enviar informacion formulario
     event.preventDefault();
     console.log(form);
-    props.history.push('/');
+    props.history.push('/login');
   };
 
   return (
@@ -40,7 +41,7 @@ const Register = (props) => {
             <input
               name='email'
               className='input'
-              type='text'
+              type='email'
               placeholder='Correo'
               onChange={handleInput}
             />
@@ -51,9 +52,13 @@ const Register = (props) => {
               placeholder='Contraseña'
               onChange={handleInput}
             />
-            <select name="user" onChange={handleInput}>
-              <option value="vendedor">Vendedor</option> 
-              <option value="administrador">Administrador</option> 
+            <select 
+              className="form-select"
+              name='user'
+              onChange={handleInput}>
+              <option defaultValue>Seleccionar tipo de usuario</option>
+              <option value="salesMan">Vendedor</option>
+              <option value="admin">Administrador</option>
             </select>
             {/* eslint-disable-next-line react/button-has-type */}
             <button className='button' type='submit'>Registrarme</button>

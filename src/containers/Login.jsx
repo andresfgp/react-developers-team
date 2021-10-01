@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../assets/styles/containers/Login.css';
+import '../assets/styles/containers/Login.scss';
 
 const Login = (props) => {
   const [form, setValues] = useState({
@@ -30,7 +30,7 @@ const Login = (props) => {
             <input
               name='email'
               className='input'
-              type='text'
+              type='email'
               placeholder='Correo'
               onChange={handleInput}
             />

@@ -6,7 +6,7 @@ import Register from '../containers/Register';
 import RegisterSale from '../containers/RegisterSale';
 import Modal from '../containers/Modal';
 import Home from '../containers/Home';
-import '../assets/styles/App.css';
+import '../assets/styles/App.scss';
 
 
 const App = () => {
