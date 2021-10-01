@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../assets/styles/containers/Register.scss';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/styles/Vars.scss';
 
 const Register = (props) => {
