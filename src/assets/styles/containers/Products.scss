@@ -1,0 +1,45 @@
+.products__container-btn>button{
+    background-color: #61DBFB;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 50px;
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 64px;
+    width: 64px;
+  
+
+    transform: rotate(0);
+    transition: .3s ease;
+}
+
+.products__container-btn>button:hover{
+    transform: rotate(360deg);
+    background-color: #FAFAFA;
+    color: #61DBFB;
+  }
+
+.products__list{
+    width: 75%;
+    align-items: center;
+}
+
+.table__products{
+    border-radius: 40px 40px 40px 40px;
+}
+
+h1{
+    color: white;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
