@@ -43,7 +43,7 @@ const NewProduct = (props) => {
 
     return (
         <>
-            <div className='container'>
+            <div className='product__container'>
                 <div className="row">
                     <div className="col">
                         <div>
