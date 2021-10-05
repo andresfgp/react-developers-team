@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import '../assets/styles/containers/Home.scss';
+import '../assets/styles/components/SalesList.scss';
 import { sales } from '../data/sales'
 // import { Sales } from '../interfaces/fetchAllSalesResponse'
 
@@ -25,9 +26,9 @@ const SalesList = (props) => {
     }
 
     return (
-        <div className='sales__list container flex-column'>
-            <div>
-                <table className='table table-dark table-striped table-bordered' id='tb'>
+        <div className='saleslist container flex-column'>
+            <div className='saleslist-table saleslist'>
+                <table className= 'table table-dark table-striped table-bordered' id='tb'>
                     <thead>
                         <tr>
                             <th>Id Venta</th>
@@ -43,9 +44,9 @@ const SalesList = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {filteredSales().length > 0 && filteredSales().map(item => {
+                        {filteredSales().length > 0 && filteredSales().map(item => { 
                             return (
-                                <tr>
+                                <tr key = {item.idVenta}>
                                     <td>{item.idVenta}</td>
                                     <td>{item.valUni}</td>
                                     <td>{item.desc}</td>
@@ -64,7 +65,8 @@ const SalesList = (props) => {
                 </table>
 
             </div>
-            <div className='container'>
+
+            <div className ='container_pag'>
                 <button className="btn btn-primary" onClick={prevPage}>Anterior</button>
                 {/* &nbsp; */}
                 <h4>{(currentPage / 3) + 1}</h4>
