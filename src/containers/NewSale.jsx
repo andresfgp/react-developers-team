@@ -1,8 +1,12 @@
 import React, {useState} from 'react'
 import '../assets/styles/containers/NewSale.scss';
 import CurrencyInput from 'react-currency-input-field';
+import Modal from '../Modal/index';
+import TodoInit from '../Modal/components/CheckModal';
 
 const NewSale = (props) => {
+
+    const [openModal, setOpenModal] = useState(false);
 
     function generateUUID() { // Public Domain/MIT
       let d = new Date().getTime();//Timestamp
@@ -38,7 +42,8 @@ const NewSale = (props) => {
         //   props.history.push('/');
         // }
         console.log(form);
-        props.history.push('/');
+        // props.history.push('/');
+        setOpenModal(true)
       } catch (error) {
         console.log('error', error);
       }
@@ -129,6 +134,11 @@ const NewSale = (props) => {
                     </div>
                 </div>
             </div>
+            {!!openModal && (
+                <Modal>
+                    <TodoInit setOpenModal={setOpenModal} />
+                </Modal>
+            )}
         </>
     )
 }

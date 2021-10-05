@@ -21,7 +21,7 @@ const ProductsList = (propsss) => {
                     {products.length > 0 &&
                         products.map(item => {
                             return (
-                                <tr>
+                                <tr key = {item.idProducto}>
                                     <td>{item.idProducto}</td>
                                     <td>{item.Nombre}</td>
                                     <td>{item.Stock}</td>
