@@ -1,15 +1,16 @@
 
-.saleslist h4{
-    color: #FAFAFA;
-    margin: 5px;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
 .saleslist{
     width: 95%;
     align-items: center;
     overflow: hidden;
+    white-space: nowrap;
+}
+
+.saleslist h4{
+  color: #FAFAFA;
+  margin: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .container_pag{
@@ -47,6 +48,30 @@ border-radius: 15px;
 background-color: rgba(0,0,0,0.5); 
 background-image: -webkit-linear-gradient(90deg,rgba(0,0,0,0.2) 75%,transparent 75%,transparent);
 border-radius: 15px;
+}
+
+.saleslist-table-empty>h6{
+  text-align: center;
+  color: white;
+}
+
+.Icon {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:30px;
+  width:30px;
+  font-weight: bold;
+  padding:3px;
+}
+
+.Icon-delete{
+  display:flex;
+  justify-content: center;
+}
+.Icon-delete:hover{
+  color: red;
 }
 
 @media only screen and (max-width: 320px) {

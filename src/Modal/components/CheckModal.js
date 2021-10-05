@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '@restart/ui/esm/Button';
+import { Link } from 'react-router-dom';
 import { ModalHeader, ModalFooter} from 'reactstrap';
 import '../assets/styles/components/CheckModal.scss';
 
@@ -14,8 +14,8 @@ const CheckModal = (props) => {
           ¡¡Venta almacenada Exitosamente!!
       </ModalHeader>                    
       <ModalFooter>
-          <Button color = "primary">Nueva Venta</Button>
-          <Button color = "secondary" onClick = {handleOnClick}>Cerrar</Button>
+          <Link to='/newSale' onClick = {handleOnClick}>Nueva Venta</Link>
+          <Link to='/' onClick = {handleOnClick}>Cerrar</Link>
       </ModalFooter>
     </div>
   );

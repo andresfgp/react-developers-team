@@ -1,5 +1,5 @@
 .CheckModal{
-    width: 90vh;
+    width: 50vh;
     background-color: rgba(255,255,255,0.7);
     display: flex;
     justify-content: center;
@@ -8,45 +8,6 @@
     border-radius:20px;
     color: #981c2c ;
     margin-top: 70px;
-}
-.CheckModal>h1{
-    color:black;
-  }
-.CheckModal>h2{
-    margin: 0;
-  }
-.CheckModal>img{
-    width: 100%;
-    padding: 20px;
-    border-radius: 20px;
-  }
-.button{
-
-  background-color: #FAFAFA;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 50px;
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  font-weight: bold;
-  color: #1C3643;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 64px;
-  width: 64px;
-
-
-  transform: rotate(45deg);
-  transition: .3s ease;
-}
-
-.button:hover{
-transform: rotate(225deg);
-background-color: #FF6347;
-color: #FAFAFA;
 }
 
 @media only screen and (max-width: 640px){

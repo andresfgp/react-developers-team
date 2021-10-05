@@ -1,28 +1,33 @@
 import React from 'react'
 import { useState } from 'react'
 import '../assets/styles/components/SalesList.scss';
-import { sales } from '../data/sales'
-// import { Sales } from '../interfaces/fetchAllSalesResponse'
+import {ReactComponent as DeleteIcon} from '../assets/static/delete.svg';
 
 const SalesList = (props) => {
 
+    const {searchedSale, deleteSales}=props;
+
     const [currentPage, setCurrentPage] = useState(0)
-    const [search, setSearch] = useState('')
+
+    const elementNumber=5;
 
     const filteredSales = () => {
-        if (search.length === 0)
-            return sales.slice(currentPage, currentPage + 3)
+            return searchedSale.slice(currentPage, currentPage + elementNumber)
     }
 
     const nextPage = () => {
-        if (sales.length > currentPage + 3)
-            setCurrentPage(currentPage + 3);
+        if (searchedSale.length > currentPage + elementNumber)
+            setCurrentPage(currentPage + elementNumber);
     }
 
     const prevPage = () => {
         if (currentPage > 0)
-            setCurrentPage(currentPage - 3);
+            setCurrentPage(currentPage - elementNumber);
     }
+
+    const onDelete=(id)=>{
+        deleteSales(id);
+      }
 
     return (
         <div className='saleslist container flex-column'>
@@ -30,6 +35,7 @@ const SalesList = (props) => {
                 <table className= 'table table-dark table-striped table-bordered' id='tb'>
                     <thead>
                         <tr>
+                            <th></th>
                             <th>Id Venta</th>
                             <th>V. Unitario</th>
                             <th>Descripción</th>
@@ -45,24 +51,27 @@ const SalesList = (props) => {
                     <tbody>
                         {filteredSales().length > 0 && filteredSales().map(item => { 
                             return (
-                                <tr key = {item.idVenta}>
-                                    <td>{item.idVenta}</td>
+                                <tr key = {item.id}>
+                                    <td><DeleteIcon className="Icon Icon-delete" onClick={()=>onDelete(item.id)} /></td>
+                                    <td>{item.id}</td>
                                     <td>{item.valUni}</td>
-                                    <td>{item.desc}</td>
+                                    <td>{item.description}</td>
                                     <td>{item.cantidad}</td>
-                                    <td>{item.valor}</td>
+                                    <td>{item.totalSaleValue}</td>
                                     <td>{item.docCliente}</td>
                                     <td>{item.estado}</td>
-                                    <td>{item.finipago}</td>
-                                    <td>{item.ffpago}</td>
-                                    <td>{item.responsable}</td>
+                                    <td>{item.initialPaymentDate}</td>
+                                    <td>{item.finalPaymentDate}</td>
+                                    <td>{item.saleManager}</td>
                                 </tr>
                             );
                         })
                         }
                     </tbody>
                 </table>
-
+                <div className="saleslist-table-empty">
+                        {searchedSale.length===0?<h6>NO EXISTEN VENTAS</h6>:null}
+                </div>
             </div>
 
             <div className ='container_pag'>
