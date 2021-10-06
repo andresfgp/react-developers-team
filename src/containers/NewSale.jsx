@@ -1,31 +1,17 @@
-import React, {useState} from 'react'
+import React, {useContext} from 'react'
 import '../assets/styles/containers/NewSale.scss';
 import CurrencyInput from 'react-currency-input-field';
+import Modal from '../Modal/index';
+import TodoInit from '../Modal/components/CheckModal';
+import {UseContext} from '../hooks/useContext'
 
 const NewSale = (props) => {
 
-    function generateUUID() { // Public Domain/MIT
-      let d = new Date().getTime();//Timestamp
-      let d2 = (performance && performance.now && (performance.now() * 1000)) || 0;//Time in microseconds since page-load or 0 if unsupported
-      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
-        let r = Math.random() * 16;//random number between 0 and 16
-        if (d > 0) { //Use timestamp until depleted
-          r = (d + r) % 16 | 0;
-          d = Math.floor(d / 16);
-        } else { //Use microseconds since page-load if supported
-          r = (d2 + r) % 16 | 0;
-          d2 = Math.floor(d2 / 16);
-        }
-        return (c === 'x' ? r : (r && 0x3 | 0x8)).toString(16);
-      });
-    }
-  
-    const [form, setValues] = useState({id:generateUUID()});
-
+    const {openModal, setOpenModal, formNewSale,setFormNewSale,addSales,generateUUID} =useContext(UseContext);
   
     const handleInput = (e) => { //recopilar informacion de formulario
-      setValues({
-        ...form,
+        setFormNewSale({
+        ...formNewSale,
         [e.target.name]: e.target.value,
       });
     };
@@ -34,11 +20,10 @@ const NewSale = (props) => {
     const handleSubmit = (e) => { // enviar informacion formulario
       e.preventDefault();
       try {
-        // if (!sales.some((item) => item.id === form.id)) {
-        //   props.history.push('/');
-        // }
-        console.log(form);
+        addSales(formNewSale);
+        setFormNewSale({id:generateUUID()})
         props.history.push('/');
+        // setOpenModal(true)
       } catch (error) {
         console.log('error', error);
       }
@@ -57,7 +42,7 @@ const NewSale = (props) => {
                                         <input 
                                             type="text"
                                             className="form-control"
-                                            placeholder={form.id} />
+                                            placeholder={formNewSale.id} />
                                     </div>
                                 </fieldset>
                                 <div className='mb-3'>
@@ -129,6 +114,11 @@ const NewSale = (props) => {
                     </div>
                 </div>
             </div>
+            {!!openModal && (
+                <Modal>
+                    <TodoInit setOpenModal={setOpenModal} />
+                </Modal>
+            )}
         </>
     )
 }

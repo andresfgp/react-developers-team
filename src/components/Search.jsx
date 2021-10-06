@@ -1,12 +1,16 @@
 
    
-import React from 'react';
+import React, {useContext} from 'react';
 import '../assets/styles/components/Search.scss';
+import {UseContext} from '../hooks/useContext'
 
-const Search = (props) => {
+
+const Search = () => {
+
+  const { searchValue, setSearchValue } = useContext(UseContext);
 
   const handleInput = (event) => { //recopilar informacion del search
-    console.log(event.target.value);
+    setSearchValue(event.target.value);
   };
 
   return (
@@ -18,6 +22,7 @@ const Search = (props) => {
           type='text'
           className="input"
           placeholder='Buscar...'
+          value={searchValue}
           onChange={handleInput}
         />
       </section>

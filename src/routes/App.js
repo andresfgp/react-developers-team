@@ -4,7 +4,6 @@ import Layout from '../components/Layout';
 import Login from '../containers/Login';
 import Register from '../containers/Register';
 import NewSale from '../containers/NewSale';
-import Modal from '../containers/Modal';
 import Home from '../containers/Home';
 import Products from '../containers/Products';
 import NewProduct from '../containers/NewProduct';
@@ -20,7 +19,6 @@ const App = () => {
           <Route exact path='/login' component={Login} />
           <Route exact path='/register' component={Register} />
           <Route exact path='/newSale' component={NewSale} />
-          <Route exact path='/modal' component={Modal} />
           <Route exact path='/newProduct' component={NewProduct} />
           <Route exact path='/Products' component={Products} />
         </Switch>
