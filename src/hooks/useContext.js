@@ -28,8 +28,8 @@ function UseProvider(props){
 
     const [sales,saveSales] = useLocalStorage('SALES_V1',[]); //nuevo Hook para localStorageItem
 
-
     const [searchValue,setSearchValue]=useState(''); //props input for Search
+
     let searchedSale=[];
     !searchValue.length>0?searchedSale=sales:searchedSale=sales.filter(item=>item.description.toLowerCase().includes(searchValue.toLowerCase())); //filter Search text
     
@@ -39,7 +39,6 @@ function UseProvider(props){
       saveSales(newSales) //setSales change for saveSale
     }
     const deleteSales=(id)=>{ // New array with delete Sales
-      console.log(id);
       const newSales=sales.filter(item=>item.id!==id); //nueva lista
       saveSales(newSales) //setSales change for saveSale
     }
@@ -54,7 +53,7 @@ function UseProvider(props){
             setOpenModal, //CONTAINER -> NewSale.jsx
             addSales, //CONTAINER -> NewSale.jsx
             generateUUID, //CONTAINER -> NewSale.jsx
-            deleteSales, //PENDIENTE            
+            deleteSales, //CONTAINER -> Home.jsx            
         }}>
             {children}
         </UseContext.Provider>
