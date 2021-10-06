@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState } from 'react'
-import '../assets/styles/containers/Home.scss';
 import '../assets/styles/components/SalesList.scss';
 import { sales } from '../data/sales'
 // import { Sales } from '../interfaces/fetchAllSalesResponse'
