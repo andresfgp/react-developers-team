@@ -7,6 +7,7 @@ import NewSale from '../containers/NewSale';
 import Home from '../containers/Home';
 import Products from '../containers/Products';
 import NewProduct from '../containers/NewProduct';
+import UpdateSales from '../containers/UpdateSales';
 import '../assets/styles/App.scss';
 
 
@@ -21,6 +22,7 @@ const App = () => {
           <Route exact path='/newSale' component={NewSale} />
           <Route exact path='/newProduct' component={NewProduct} />
           <Route exact path='/Products' component={Products} />
+          <Route exact path='/updateSale' component={UpdateSales} />
         </Switch>
       </Layout>
     </BrowserRouter>

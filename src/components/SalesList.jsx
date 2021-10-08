@@ -1,18 +1,17 @@
 import React from 'react'
 import { useState } from 'react'
 import '../assets/styles/components/SalesList.scss';
-import {ReactComponent as DeleteIcon} from '../assets/static/delete.svg';
+import { ReactComponent as DeleteIcon } from '../assets/static/delete.svg';
+import { ReactComponent as UpdateIcon } from '../assets/static/edit.svg';
 
-const SalesList = (props) => {
+const SalesList = (props,p) => {
 
-    const {searchedSale, deleteSales}=props;
-
+    const { searchedSale, deleteSales, updateSales} = props;
     const [currentPage, setCurrentPage] = useState(0)
-
-    const elementNumber=5;
+    const elementNumber = 5;
 
     const filteredSales = () => {
-            return searchedSale.slice(currentPage, currentPage + elementNumber)
+        return searchedSale.slice(currentPage, currentPage + elementNumber)
     }
 
     const nextPage = () => {
@@ -25,16 +24,23 @@ const SalesList = (props) => {
             setCurrentPage(currentPage - elementNumber);
     }
 
-    const onDelete=(id)=>{
+    const onDelete = (id) => {
         deleteSales(id);
-      }
+    }
+
+    const onEdit = (id) => {
+        console.log(props);
+
+        updateSales(id);
+    }
 
     return (
         <div className='saleslist container flex-column'>
             <div className='saleslist-table saleslist'>
-                <table className= 'table table-dark table-striped table-bordered' id='tb'>
+                <table className='table table-dark table-striped table-bordered' id='tb'>
                     <thead>
                         <tr>
+                            <th></th>
                             <th></th>
                             <th>Id Venta</th>
                             <th>V. Unitario</th>
@@ -49,10 +55,11 @@ const SalesList = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {filteredSales().length > 0 && filteredSales().map(item => { 
+                        {filteredSales().length > 0 && filteredSales().map(item => {
                             return (
-                                <tr key = {item.id}>
-                                    <td><DeleteIcon className="Icon Icon-delete" onClick={()=>onDelete(item.id)} /></td>
+                                <tr key={item.id}>
+                                    <td><DeleteIcon className="Icon Icon-delete" onClick={() => onDelete(item.id)} /></td>
+                                    <td><UpdateIcon className="Icon Icon-update" onClick={() => onEdit(item.id)} /></td>
                                     <td>{item.id}</td>
                                     <td>{item.valUni}</td>
                                     <td>{item.description}</td>
@@ -70,14 +77,14 @@ const SalesList = (props) => {
                     </tbody>
                 </table>
                 <div className="saleslist-table-empty">
-                        {searchedSale.length===0?<h6>NO EXISTEN VENTAS</h6>:null}
+                    {searchedSale.length === 0 ? <h6>NO EXISTEN VENTAS</h6> : null}
                 </div>
             </div>
 
-            <div className ='container_pag'>
+            <div className='container_pag'>
                 <button className="btn btn-primary" onClick={prevPage}>Anterior</button>
                 {/* &nbsp; */}
-                <h4>{(currentPage / 3) + 1}</h4>
+                <h4>{(currentPage / elementNumber) + 1}</h4>
                 {/* &nbsp; */}
                 <button className="btn btn-primary" onClick={nextPage}>Siguiente</button>
             </div>

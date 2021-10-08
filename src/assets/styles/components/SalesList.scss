@@ -64,6 +64,7 @@ border-radius: 15px;
   width:30px;
   font-weight: bold;
   padding:3px;
+  color:#fff;
 }
 
 .Icon-delete{
@@ -73,6 +74,17 @@ border-radius: 15px;
 .Icon-delete:hover{
   color: red;
 }
+
+
+.Icon-update{
+  display:flex;
+  justify-content: center;
+}
+.Icon-update:hover{
+  color: #ffe600;
+}
+
+
 
 @media only screen and (max-width: 320px) {
 
