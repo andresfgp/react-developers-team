@@ -51,7 +51,7 @@ function UseProvider(props) {
       searchValue,  //COMPONENT -> Search.jsx
       formNewSale,  //CONTAINER -> NewSale.jsx
       openModal,  //CONTAINER -> NewSale.jsx
-      searchedSale, //CONTAINER -> Home.jsx
+      searchedSale, //CONTAINER -> Home.jsx, updateSale.jsx
       setSearchValue, //CONTAINER -> Search.jsx
       setFormNewSale,  //CONTAINER -> NewSale.jsx
       setOpenModal, //CONTAINER -> NewSale.jsx

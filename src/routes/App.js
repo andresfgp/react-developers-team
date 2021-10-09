@@ -22,7 +22,7 @@ const App = () => {
           <Route exact path='/newSale' component={NewSale} />
           <Route exact path='/newProduct' component={NewProduct} />
           <Route exact path='/Products' component={Products} />
-          <Route exact path='/updateSale' component={UpdateSales} />
+          <Route exact path='/updateSale/:id' component={UpdateSales} />
         </Switch>
       </Layout>
     </BrowserRouter>

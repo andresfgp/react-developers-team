@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import '../assets/styles/components/SalesList.scss';
 import { ReactComponent as DeleteIcon } from '../assets/static/delete.svg';
 import { ReactComponent as UpdateIcon } from '../assets/static/edit.svg';
@@ -58,8 +59,8 @@ const SalesList = (props,p) => {
                         {filteredSales().length > 0 && filteredSales().map(item => {
                             return (
                                 <tr key={item.id}>
-                                    <td><DeleteIcon className="Icon Icon-delete" onClick={() => onDelete(item.id)} /></td>
-                                    <td><UpdateIcon className="Icon Icon-update" onClick={() => onEdit(item.id)} /></td>
+                                    <td><DeleteIcon className="Icon Icon-delete" onClick={() => onDelete(item.id)} /></td> 
+                                    <td><Link to={`/updateSale/${item.id}`}><UpdateIcon className="Icon Icon-update" onClick={() => onEdit(item.id)} /></Link></td>
                                     <td>{item.id}</td>
                                     <td>{item.valUni}</td>
                                     <td>{item.description}</td>

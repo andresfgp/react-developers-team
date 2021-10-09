@@ -1,13 +1,27 @@
 import React, {useContext} from 'react'
 import '../assets/styles/containers/NewSale.scss';
 import CurrencyInput from 'react-currency-input-field';
-import Modal from '../Modal/index';
-import TodoInit from '../Modal/components/CheckModal';
 import {UseContext} from '../hooks/useContext'
 
 const UpdateSales = (props) => {
 
-    const {openModal, setOpenModal} =useContext(UseContext);
+    const {searchedSale} =useContext(UseContext);
+
+      // eslint-disable-next-line react/destructuring-assignment
+    const { id } = props.match.params;
+
+    const userID = searchedSale.filter((item) => ((item.id === id)));
+
+    const [formID, setValues] = React.useState(userID[0]);
+
+    const handleInput = (e) => { //recopilar informacion de formulario
+        setValues({
+          ...formID,
+          [e.target.name]: e.target.value,
+        });
+      };
+
+    console.log(formID);
 
     return (
         <>
@@ -24,6 +38,7 @@ const UpdateSales = (props) => {
                                         <input 
                                             type="text"
                                             className="form-control"
+                                            defaultValue={formID.id}
                                             // placeholder={formNewSale.id}
                                              />
                                     </div>
@@ -33,10 +48,11 @@ const UpdateSales = (props) => {
                                     <CurrencyInput
                                         name='totalSaleValue'
                                         className='form-control'
-                                       // onChange={handleInput}
+                                        onChange={handleInput}
                                         placeholder='$'
                                         prefix='$'
                                         step={1}
+                                        defaultValue={formID.totalSaleValue}
                                         required
                                     />
                                 </div>
@@ -48,6 +64,7 @@ const UpdateSales = (props) => {
                                         name='description'
                                         className='form-control'
                                         rows="3"
+                                        defaultValue={formID.description}
                                         required
                                     />
                                 </div>
@@ -59,6 +76,7 @@ const UpdateSales = (props) => {
                                             type='date'
                                             name='initialPaymentDate'
                                             className='form-control'
+                                            defaultValue={formID.initialPaymentDate}
                                             required
                                         />
                                     </div>
@@ -69,6 +87,7 @@ const UpdateSales = (props) => {
                                             type='date'
                                             name='finalPaymentDate'
                                             className='form-control'
+                                            defaultValue={formID.finalPaymentDate}
                                             required
                                         />
                                     </div>
@@ -80,7 +99,7 @@ const UpdateSales = (props) => {
                                             name='saleManager'
                                            // onChange={handleInput}
                                             required>
-                                            <option defaultValue>Seleccionar responsable venta</option>
+                                            <option defaultValue>{formID.saleManager}</option>
                                             <option value="andres">Andrés García</option>
                                             <option value="brayan">Brayan Padilla</option>
                                             <option value="sebastian">Juan Sebastián</option>
@@ -97,11 +116,6 @@ const UpdateSales = (props) => {
                     </div>
                 </div>
             </div>
-            {!!openModal && (
-                <Modal>
-                    <TodoInit setOpenModal={setOpenModal} />
-                </Modal>
-            )}
         </>
     )
 }
