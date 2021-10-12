@@ -5,9 +5,9 @@ import '../assets/styles/components/SalesList.scss';
 import { ReactComponent as DeleteIcon } from '../assets/static/delete.svg';
 import { ReactComponent as UpdateIcon } from '../assets/static/edit.svg';
 
-const SalesList = (props,p) => {
+const SalesList = (props) => {
 
-    const { searchedSale, deleteSales, updateSales} = props;
+    const { searchedSale, deleteSales, initSaleEdit} = props;
     const [currentPage, setCurrentPage] = useState(0)
     const elementNumber = 5;
 
@@ -30,9 +30,7 @@ const SalesList = (props,p) => {
     }
 
     const onEdit = (id) => {
-        console.log(props);
-
-        updateSales(id);
+        initSaleEdit(id);
     }
 
     return (

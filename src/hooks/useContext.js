@@ -25,13 +25,14 @@ function UseProvider(props) {
 
   const [openModal, setOpenModal] = useState(false); // state Modal and function to set
   const [formNewSale, setFormNewSale] = useState({ id: generateUUID() });
-
   const [sales, saveSales] = useLocalStorage('SALES_V1', []); //nuevo Hook para localStorageItem
-
   const [searchValue, setSearchValue] = useState(''); //props input for Search
+  const [updateValue, setUpdateValue] = useState({});
 
   let searchedSale = [];
   !searchValue.length > 0 ? searchedSale = sales : searchedSale = sales.filter(item => item.description.toLowerCase().includes(searchValue.toLowerCase())); //filter Search text
+
+  //const [updateValue, setUpdateValue] = useState(searchedSale.filter((item) => ((item.id === id)))[0]);
 
   const addSales = (form) => { // New array with important true or false
     const newSales = [...sales]; //nueva 
@@ -43,9 +44,20 @@ function UseProvider(props) {
     saveSales(newSales) //setSales change for saveSale
   }
 
-  const updateSales = (id) => {
-    console.log('desde el use context', id);
+  const initSaleEdit = (id) => {
+    setUpdateValue(searchedSale.filter((item) => ((item.id === id)))[0]);
   }
+
+  const updateSale = () => {
+    let newSales = [...sales]
+      .map((item) => ((item.id === updateValue.id) ? item = updateValue : item));
+    saveSales(newSales)
+  }
+
+
+
+
+
   return (
     <UseContext.Provider value={{
       searchValue,  //COMPONENT -> Search.jsx
@@ -58,7 +70,10 @@ function UseProvider(props) {
       addSales, //CONTAINER -> NewSale.jsx
       generateUUID, //CONTAINER -> NewSale.jsx
       deleteSales, //CONTAINER -> Home.jsx 
-      updateSales, //COMPONENTS -> SalesList.jsx         
+      updateSale, //COMPONENTS -> SalesList.jsx   
+      updateValue, //
+      setUpdateValue,
+      initSaleEdit,
     }}>
       {children}
     </UseContext.Provider>

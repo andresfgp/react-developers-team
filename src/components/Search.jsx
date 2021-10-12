@@ -1,9 +1,6 @@
-
-   
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import '../assets/styles/components/Search.scss';
-import {UseContext} from '../hooks/useContext'
-
+import { UseContext } from '../hooks/useContext'
 
 const Search = () => {
 

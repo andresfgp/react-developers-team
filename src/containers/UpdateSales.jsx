@@ -1,27 +1,26 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react';
 import '../assets/styles/containers/NewSale.scss';
 import CurrencyInput from 'react-currency-input-field';
-import {UseContext} from '../hooks/useContext'
+import { UseContext } from '../hooks/useContext'
+
 
 const UpdateSales = (props) => {
 
-    const {searchedSale} =useContext(UseContext);
+    const { updateValue, setUpdateValue, updateSale } = useContext(UseContext);
 
-      // eslint-disable-next-line react/destructuring-assignment
-    const { id } = props.match.params;
-
-    const userID = searchedSale.filter((item) => ((item.id === id)));
-
-    const [formID, setValues] = React.useState(userID[0]);
 
     const handleInput = (e) => { //recopilar informacion de formulario
-        setValues({
-          ...formID,
-          [e.target.name]: e.target.value,
+        setUpdateValue({
+            ...updateValue,
+            [e.target.name]: e.target.value,
         });
-      };
 
-    console.log(formID);
+    };
+    const handleEdit = (e) => {
+        e.preventDefault();
+        updateSale();
+        props.history.push('/'); 
+       }
 
     return (
         <>
@@ -29,18 +28,16 @@ const UpdateSales = (props) => {
                 <div className='row'>
                     <div className='col'>
                         <div>
-                            <h1 className='col__text'>Nueva Venta</h1>
-                            <form //</div>onSubmit={handleSubmit}
-                            >
+                            <h1 className='col__text'>Editar Venta</h1>
+                            <form onSubmit={handleEdit}>
                                 <fieldset disabled>
                                     <div className="mb-3">
                                         <label>Identificador único de venta</label>
-                                        <input 
+                                        <input
                                             type="text"
                                             className="form-control"
-                                            defaultValue={formID.id}
-                                            // placeholder={formNewSale.id}
-                                             />
+                                            defaultValue={updateValue.id}
+                                        />
                                     </div>
                                 </fieldset>
                                 <div className='mb-3'>
@@ -48,23 +45,23 @@ const UpdateSales = (props) => {
                                     <CurrencyInput
                                         name='totalSaleValue'
                                         className='form-control'
-                                        onChange={handleInput}
                                         placeholder='$'
                                         prefix='$'
                                         step={1}
-                                        defaultValue={formID.totalSaleValue}
+                                        defaultValue={updateValue.totalSaleValue.substring(1)}
+                                        onChange={handleInput}
                                         required
                                     />
                                 </div>
                                 <div className='mb-3'>
                                     <label>Descripción de la Venta</label>
                                     <textarea
-                                       // onChange={handleInput}
+                                        onChange={handleInput}
                                         type='text'
                                         name='description'
                                         className='form-control'
                                         rows="3"
-                                        defaultValue={formID.description}
+                                        defaultValue={updateValue.description}
                                         required
                                     />
                                 </div>
@@ -72,34 +69,35 @@ const UpdateSales = (props) => {
                                     <div>
                                         <label>Fecha Inicial de Pago</label>
                                         <input
-                                          //  onChange={handleInput}
+                                            onChange={handleInput}
                                             type='date'
                                             name='initialPaymentDate'
                                             className='form-control'
-                                            defaultValue={formID.initialPaymentDate}
+                                            defaultValue={updateValue.initialPaymentDate}
                                             required
                                         />
                                     </div>
                                     <div>
                                         <label>Fecha Final de Pago</label>
                                         <input
-                                           // onChange={handleInput}
+                                            onChange={handleInput}
                                             type='date'
                                             name='finalPaymentDate'
                                             className='form-control'
-                                            defaultValue={formID.finalPaymentDate}
+                                            defaultValue={updateValue.finalPaymentDate}
                                             required
                                         />
                                     </div>
                                 </div>
                                 <div className='col__saleManager'>
                                     <div className='col__saleManager-select'>
-                                        <select 
+                                        <select
                                             className="form-select"
                                             name='saleManager'
-                                           // onChange={handleInput}
-                                            required>
-                                            <option defaultValue>{formID.saleManager}</option>
+                                            onChange={handleInput}
+                                            required
+                                            defaultValue={updateValue.saleManager}>
+
                                             <option value="andres">Andrés García</option>
                                             <option value="brayan">Brayan Padilla</option>
                                             <option value="sebastian">Juan Sebastián</option>

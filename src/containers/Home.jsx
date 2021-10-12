@@ -7,7 +7,7 @@ import { UseContext } from '../hooks/useContext'
 
 const Home = (props) => {
 
-    const { searchedSale, deleteSales, updateSales } = useContext(UseContext);
+    const { searchedSale, deleteSales, initSaleEdit } = useContext(UseContext);
 
     const handleOnClick = (e) => {
         props.history.push('/newSale');
@@ -20,7 +20,7 @@ const Home = (props) => {
                 <div className='sales__container-btn'>
                     <button onClick={handleOnClick}>+</button>
                 </div>
-                <SalesList searchedSale={searchedSale} deleteSales={deleteSales} updateSales={updateSales} />
+                <SalesList searchedSale={searchedSale} deleteSales={deleteSales} initSaleEdit={initSaleEdit} />
             </div>
         </>
     )
