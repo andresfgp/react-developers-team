@@ -2,7 +2,9 @@ import React, { useContext } from 'react';
 import '../assets/styles/components/Search.scss';
 import { UseContext } from '../hooks/useContext'
 
-const Search = () => {
+const Search = (props) => {
+
+  const {name}=props;
 
   const { searchValue, setSearchValue } = useContext(UseContext);
 
@@ -13,7 +15,7 @@ const Search = () => {
   return (
     <>
       <section className='main'>
-        <h2 className='main__title'>¿Buscas alguna venta?</h2>
+        <h2 className='main__title'>¿Buscas {name}?</h2>
         <input
           name='search'
           type='text'

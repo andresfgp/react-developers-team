@@ -1,4 +1,11 @@
-.product__container{
+.newSale {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+.newSale__container{
     border-radius: 25px;
     padding:20px;
     margin-top:30px;
@@ -33,7 +40,7 @@
 .col__dates>div{
     width: 48%;
 }
-.col__productManager{
+.col__saleManager{
     display:flex;
     flex-direction: row;
     justify-content:center;
@@ -44,10 +51,18 @@
 
 @media only screen and (max-width: 600px) {
 
-    .container{
+    .newSale__container{
         width: 90%;
     }
-    .col__productManager-select>select{
+    .col__dates{
+        flex-direction: column;
+        margin-bottom: 0px;
+    }
+    .col__dates>div{
+        width: 100%;
+        margin-bottom: 16px;
+    }
+    .col__saleManager-select>select{
         flex-direction: column;
 
     }
@@ -55,7 +70,7 @@
 
   @media only screen and (max-width: 380px) {
 
-    .col__productManager-select>select{
+    .col__saleManager-select>select{
         font-size: 0.8rem;
     }
   }

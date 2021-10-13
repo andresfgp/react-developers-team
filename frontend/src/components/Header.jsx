@@ -16,19 +16,19 @@ const Header = () => {
               <img src={menu} alt="menu" />
             </div>
             <ul>
-              <li>
-                <Link to='/'>
-                  Home
+            <li>
+                <Link to='/login'>
+                  Iniciar Sesión
                 </Link>
               </li>
               <li>
-                <Link to='/login'>
-                  Login
+                <Link to='/sales'>
+                  Ventas
                 </Link>
               </li>
               <li>
                 <Link to='/products'>
-                  Products
+                  Productos
                 </Link>
               </li>
             </ul>
