@@ -10,7 +10,6 @@ const UpdateSale = (props) => {
 
 
     const handleInput = (e) => { //recopilar informacion de formulario
-        console.log(updateSale);
         setUpdateSale({
             ...updateSale,
             [e.target.name]: e.target.value,
