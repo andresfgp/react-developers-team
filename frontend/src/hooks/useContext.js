@@ -32,6 +32,9 @@ function UseProvider(props) {
   const [formNewProduct, setFormNewProduct] = useState({ id: generateUUID() });
   const [products, saveProducts] = useLocalStorage('PRODUCTS_V1', []); //nuevo Hook para localStorageItem
   const [updateProduct, setUpdateProduct] = useState({});
+
+  const [formNewSupplier, setFormNewSupplier] = useState({ id: generateUUID() });
+  const [suppliers, saveSuppliers] = useLocalStorage('SUPPLIERS_V1', []); //nuevo Hook para localStorageItem
   
   const [searchValue, setSearchValue] = useState(''); //props input for Search
 
@@ -51,6 +54,11 @@ function UseProvider(props) {
     save(newItem)
   }
 
+  const deleteSupplier = (supplier) => { 
+    const newItem = suppliers.filter(item => item.supplier !== supplier); 
+    saveSuppliers(newItem)
+  }
+
   const updateItem = (array,save,value) => {
     let newItem = [...array]
     .map((item) => ((item.id === value.id) ? item = value : item));
@@ -68,7 +76,7 @@ function UseProvider(props) {
   return (
     <UseContext.Provider value={{
       searchValue,  //COMPONENT -> Search.jsx
-      openModal,  //CONTAINER -> NewSale.jsx, NewProduct.jsx
+      openModal,  //CONTAINER -> NewSale.jsx, NewProduct.jsx, UpdateProduct.jsx
       formNewSale,  //CONTAINER -> NewSale.jsx
       updateSale, //CONTAINER -> UpdateSale.jsx
       searchedSale, //CONTAINER -> Sales.jsx
@@ -79,18 +87,23 @@ function UseProvider(props) {
       updateProduct, //CONTAINER -> UpdateProduct.jsx
       products, //CONTAINER -> Products.jsx, NewProduct.jsx, UpdateProduct.jsx  
       saveProducts, //CONTAINER -> Products.jsx, NewProduct.jsx, UpdateProduct.jsx 
+      formNewSupplier, //MODAL-COMPONENT -> NewSupplier.jsx
+      suppliers, //MODAL-COMPONENT -> NewSupplier.jsx //CONTAINER -> NewProduct.jsx, UpdateProduct.jsx
+      saveSuppliers, //MODAL-COMPONENT -> NewSupplier.jsx
       setSearchValue, //CONTAINER -> Search.jsx
-      setOpenModal, //CONTAINER -> NewSale.jsx, NewProduct.jsx
-      addItem, //CONTAINER -> NewSale.jsx, NewProduct.jsx
+      setOpenModal, //CONTAINER -> NewSale.jsx, NewProduct.jsx, UpdateProduct.jsx //MODAL-COMPONENT -> NewSupplier.jsx
+      addItem, //CONTAINER -> NewSale.jsx, NewProduct.jsx //MODAL-COMPONENT -> NewSupplier.jsx
       deleteItem, //CONTAINER -> Sales.jsx, Products.jsx
       updateItem, //CONTAINER -> UpdateSale.jsx, UpdateProduct.jsx     
-      generateUUID, //CONTAINER -> NewSale.jsx, NewProduct.jsx
+      generateUUID, //CONTAINER -> NewSale.jsx, NewProduct.jsx //MODAL-COMPONENT -> NewSupplier.jsx
       setFormNewSale,  //CONTAINER -> NewSale.jsx
       setUpdateSale, //CONTAINER -> UpdateSale.jsx
       initSaleEdit, //CONTAINER -> Sales.jsx
       setFormNewProduct,  //CONTAINER -> NewProduct.jsx
       setUpdateProduct, //CONTAINER -> UpdateProduct.jsx
       initProductEdit, //CONTAINER ->  Products.jsx
+      setFormNewSupplier, //MODAL-COMPONENT -> NewSupplier.jsx
+      deleteSupplier, //CONTAINER -> NewProduct.jsx
     }}>
       {children}
     </UseContext.Provider>

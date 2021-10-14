@@ -48,6 +48,18 @@
     margin-bottom: 16px;
 }
 
+.Icon__updateProduct {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:35px;
+    width:42.5px;
+    margin-left: 5px;
+    font-weight: bold;
+    color:#fff;
+  }
+
 
 @media only screen and (max-width: 600px) {
 

@@ -10,16 +10,3 @@
     margin-top: 70px;
 }
 
-@media only screen and (max-width: 640px){
-    .CertificateModal{
-      width: 90%;
-    }
-    .CertificateModal>img{
-      width: 100%;
-      padding:10px;
-    }
-    .button{
-      background-color: #FF6347;
-      color: #FAFAFA;
-    }
-}

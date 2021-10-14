@@ -2,11 +2,21 @@ import React, { useContext } from 'react';
 import '../assets/styles/containers/UpdateProduct.scss';
 // import CurrencyInput from 'react-currency-input-field';
 import { UseContext } from '../hooks/useContext'
+import Modal from '../Modal/index';
+import NewSupplier from '../Modal/components/NewSupplier';
+import { ReactComponent as AddIcon } from '../assets/static/add.svg';
 
 
 const UpdateProduct = (props) => {
 
-    const { updateProduct, setUpdateProduct, updateItem, products, saveProducts } = useContext(UseContext);
+    const { openModal,
+            setOpenModal,
+            updateProduct,
+            setUpdateProduct, 
+            updateItem,
+            products,
+            saveProducts,
+            suppliers } = useContext(UseContext);
 
 
     const handleInput = (e) => { //recopilar informacion de formulario
@@ -21,6 +31,11 @@ const UpdateProduct = (props) => {
         updateItem(products,saveProducts,updateProduct);
         props.history.push('/products'); 
        }
+    
+    const handleOnclick =() => {
+        setOpenModal(true)
+    }
+
 
     return (
         <>
@@ -91,13 +106,11 @@ const UpdateProduct = (props) => {
                                                 onChange={handleInput}
                                                 required
                                                 defaultValue={updateProduct.supplier}>
-                                                <option defaultValue>Seleccionar Proveedor</option>
-                                                <option value="Xiami">Xiaomi</option>
-                                                <option value="Microsoft">Miscrosoft</option>
-                                                <option value="Razer">Razer</option>
-                                                <option value="Gearbest">Gearbest</option>
-                                                <option value="Apple">Apple</option>
+                                                {suppliers.map((item) => {
+                                                return <option key={item.id} value={item.supplier}>{item.supplier}</option>;
+                                                })}
                                             </select>
+                                            <AddIcon className="Icon__updateProduct Icon-add" onClick={handleOnclick} />
                                         </div>
                                     </div>
                                     <div className='col__btn'>
@@ -108,6 +121,11 @@ const UpdateProduct = (props) => {
                         </div>
                     </div>
                 </div>
+                {!!openModal && (
+                    <Modal>
+                        <NewSupplier setOpenModal={setOpenModal} />
+                    </Modal>
+                )}
             </section>
         </>
     )

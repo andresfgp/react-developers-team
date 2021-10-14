@@ -48,6 +48,45 @@
     margin-bottom: 16px;
 }
 
+.col__productManager-select{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+.col__productManager-select>button{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    text-align: center;
+    font-size:28px;
+    color: white;
+    margin-left: 10px;
+    width:30px;
+    height:30px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: solid 2.3px white;
+}
+
+.col__productManager-select>button:hover{
+    background-color: rgba(255,255,255,0.5);
+}
+
+
+.Icon__newProduct {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:35px;
+    width:42.5px;
+    margin-left: 5px;
+    font-weight: bold;
+    color:#fff;
+  }
+.Icon-add:hover{
+    color: rgb(16, 87, 4);
+}
 
 @media only screen and (max-width: 600px) {
 

@@ -2,12 +2,23 @@ import React, {useContext} from 'react'
 import '../assets/styles/containers/NewProduct.scss';
 // import CurrencyInput from 'react-currency-input-field';
 import Modal from '../Modal/index';
-import TodoInit from '../Modal/components/CheckModal';
+import NewSupplier from '../Modal/components/NewSupplier';
 import {UseContext} from '../hooks/useContext'
+import { ReactComponent as DeleteIcon } from '../assets/static/delete.svg';
+import { ReactComponent as AddIcon } from '../assets/static/add.svg';
 
 const NewProduct = (props) => {
 
-    const {openModal, setOpenModal, formNewProduct,setFormNewProduct,addItem,generateUUID, products, saveProducts} = useContext(UseContext);
+    const { openModal,
+            setOpenModal,
+            formNewProduct,
+            setFormNewProduct,
+            addItem,
+            generateUUID,
+            products,
+            saveProducts,
+            suppliers,
+            deleteSupplier} = useContext(UseContext);
   
     const handleInput = (e) => { //recopilar informacion de formulario
         setFormNewProduct({
@@ -23,11 +34,19 @@ const NewProduct = (props) => {
         addItem(formNewProduct, products, saveProducts);
         setFormNewProduct({id:generateUUID()})
         props.history.push('/products');
-        // setOpenModal(true)
       } catch (error) {
         console.log('error', error);
       }
     };
+
+    const handleOnclick =() => {
+        setOpenModal(true)
+    }
+
+    const onDelete = (supplier) => {
+        deleteSupplier(supplier);
+    }
+
     return (
         <>
             <section className='newProduct'>
@@ -92,13 +111,14 @@ const NewProduct = (props) => {
                                                 name='supplier'
                                                 onChange={handleInput}
                                                 required>
-                                                <option defaultValue>Seleccionar Proveedor</option>
-                                                <option value="Xiami">Xiaomi</option>
-                                                <option value="Microsoft">Miscrosoft</option>
-                                                <option value="Razer">Razer</option>
-                                                <option value="Gearbest">Gearbest</option>
-                                                <option value="Apple">Apple</option>
+                                                {suppliers.length===0 && <option defaultValue>Agregar Proveedor</option> }
+                                                {suppliers.length>0 && <option defaultValue>Seleccionar Proveedor</option> }
+                                                {suppliers.map((item) => {
+                                                return <option key={item.id} value={item.supplier}>{item.supplier}</option>;
+                                                })}
                                             </select>
+                                            <AddIcon className="Icon__newProduct Icon-add" onClick={handleOnclick}/>
+                                            <DeleteIcon className="Icon__newProduct Icon-delete" onClick={() => onDelete(formNewProduct.supplier)} />
                                         </div>
                                     </div>
                                     <div className='col__btn'>
@@ -111,7 +131,7 @@ const NewProduct = (props) => {
                 </div>
                 {!!openModal && (
                     <Modal>
-                        <TodoInit setOpenModal={setOpenModal} />
+                        <NewSupplier setOpenModal={setOpenModal} />
                     </Modal>
                 )}
             </section>
