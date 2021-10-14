@@ -111,8 +111,8 @@ const NewProduct = (props) => {
                                                 name='supplier'
                                                 onChange={handleInput}
                                                 required>
-                                                {suppliers.length===0 && <option defaultValue>Agregar Proveedor</option> }
-                                                {suppliers.length>0 && <option defaultValue>Seleccionar Proveedor</option> }
+                                                {suppliers.length===0 && <option value=''>Agregar Proveedor</option> }
+                                                {suppliers.length>0 && <option value=''>Seleccionar Proveedor</option> }
                                                 {suppliers.map((item) => {
                                                 return <option key={item.id} value={item.supplier}>{item.supplier}</option>;
                                                 })}

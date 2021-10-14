@@ -10,6 +10,7 @@ const UpdateSale = (props) => {
 
 
     const handleInput = (e) => { //recopilar informacion de formulario
+        console.log(updateSale);
         setUpdateSale({
             ...updateSale,
             [e.target.name]: e.target.value,
@@ -124,6 +125,19 @@ const UpdateSale = (props) => {
                                                 <option value="Norberto Medina">Norberto Medina</option>
                                                 <option value="Francisco Javier">Francisco Javier</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div className='state'>
+                                        <label className="form-check-label">Estado actual: en proceso</label>
+                                    </div>
+                                    <div className='col__saleManager'>
+                                        <div className="form-check form-check-inline">
+                                            <input className="form-check-input" type="radio" name="state" onChange={handleInput} value="Completado"/>
+                                            <label className="form-check-label">Completado</label>
+                                        </div>
+                                        <div className="form-check form-check-inline">
+                                            <input className="form-check-input" type="radio" name="state" onChange={handleInput} value="Cancelado" />
+                                            <label className="form-check-label">Cancelar</label>
                                         </div>
                                     </div>
                                     <div className='col__btn'>

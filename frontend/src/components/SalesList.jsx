@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import '../assets/styles/components/SalesList.scss';
 import { ReactComponent as DeleteIcon } from '../assets/static/delete.svg';
 import { ReactComponent as UpdateIcon } from '../assets/static/edit.svg';
+import { ReactComponent as CompletedIcon } from '../assets/static/completed.svg';
+import { ReactComponent as CancelIcon } from '../assets/static/cancel.svg';
 
 const SalesList = (props) => {
 
@@ -42,8 +44,8 @@ const SalesList = (props) => {
                         <table className='table table-dark table-striped table-bordered' id='tb'>
                             <thead>
                                 <tr>
-                                    <th></th>
-                                    <th></th>
+                                    <th>Eliminar</th>
+                                    <th>Estado</th>
                                     <th>Identificador único de venta</th>
                                     <th>Descripción</th>
                                     <th>Valor</th>
@@ -62,7 +64,9 @@ const SalesList = (props) => {
                                     return (
                                         <tr key={item.id}>
                                             <td><div className="icons"><DeleteIcon className="Icon Icon-delete" onClick={() => onDelete(item.id)} /></div></td> 
-                                            <td><Link className="icons" to={`/updateSale/${item.id}`}><UpdateIcon className="Icon Icon-update" onClick={() => onEdit(item.id)} /></Link></td>
+                                            {item.state==='En proceso' && <td><Link className="icons" to={`/updateSale/${item.id}`}><UpdateIcon className="Icon Icon-update" onClick={() => onEdit(item.id)} /></Link></td>}
+                                            {item.state==='Completado' && <td><div className="icons"><CompletedIcon className="Icon2" onClick={() => onEdit(item.id)} /></div></td>}
+                                            {item.state==='Cancelado' && <td><div className="icons"><CancelIcon className="Icon2" onClick={() => onEdit(item.id)} /></div></td>}
                                             <td>{item.id}</td>
                                             <td>{item.description}</td>
                                             <td>{`$${item.saleValue}`}</td>

@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext,useEffect,useState} from 'react'
 import '../assets/styles/containers/NewSale.scss';
 // import CurrencyInput from 'react-currency-input-field';
 import Modal from '../Modal/index';
@@ -7,8 +7,17 @@ import {UseContext} from '../hooks/useContext'
 
 const NewSale = (props) => {
 
-    const {openModal, setOpenModal, formNewSale,setFormNewSale,addItem,generateUUID, sales, saveSales} =useContext(UseContext);
-  
+    const { openModal,
+            setOpenModal,
+            formNewSale,
+            setFormNewSale,
+            addItem,
+            generateUUID,
+            sales,
+            saveSales} =useContext(UseContext);
+
+    const [initState,setInitState]= useState()
+
     const handleInput = (e) => { //recopilar informacion de formulario
         setFormNewSale({
         ...formNewSale,
@@ -16,10 +25,17 @@ const NewSale = (props) => {
       });
     };
     // eslint-disable-next-line react/destructuring-assignment
-  
+
+    useEffect(() => {
+            formNewSale.initialPaymentDate===formNewSale.finalPaymentDate?
+                setInitState("Completado"):
+                setInitState("En proceso");
+    },[formNewSale])
+
     const handleSubmit = (e) => { // enviar informacion formulario
       e.preventDefault();
       try {
+        formNewSale.state=initState;
         addItem(formNewSale,sales, saveSales);
         setFormNewSale({id:generateUUID()})
         props.history.push('/sales');
@@ -117,7 +133,7 @@ const NewSale = (props) => {
                                                 name='saleManager'
                                                 onChange={handleInput}
                                                 required>
-                                                <option defaultValue>Seleccionar responsable venta</option>
+                                                <option value=''>Seleccionar responsable venta</option>
                                                 <option value="Andrés García">Andrés García</option>
                                                 <option value="Brayan Padilla">Brayan Padilla</option>
                                                 <option value="Juan Sebastián">Juan Sebastián</option>

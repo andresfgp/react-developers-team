@@ -106,6 +106,7 @@ const UpdateProduct = (props) => {
                                                 onChange={handleInput}
                                                 required
                                                 defaultValue={updateProduct.supplier}>
+                                                {suppliers.length===0 && <option value=''>Agregar Proveedor</option> }
                                                 {suppliers.map((item) => {
                                                 return <option key={item.id} value={item.supplier}>{item.supplier}</option>;
                                                 })}

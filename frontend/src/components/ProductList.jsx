@@ -44,8 +44,8 @@ const ProductList = (props) => {
                         <table className='table table-dark table-striped table-bordered' id='tb'>
                             <thead>
                                 <tr>
-                                    <th></th>
-                                    <th></th>
+                                    <th>Eliminar</th>
+                                    <th>Editar</th>
                                     <th>Identificador único de producto</th>
                                     <th>Nombre</th>
                                     <th>Stock</th>

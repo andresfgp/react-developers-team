@@ -25,7 +25,7 @@ function UseProvider(props) {
 
   const [openModal, setOpenModal] = useState(false); // state Modal and function to set
 
-  const [formNewSale, setFormNewSale] = useState({ id: generateUUID() });
+  const [formNewSale, setFormNewSale] = useState({ id: generateUUID()});
   const [sales, saveSales] = useLocalStorage('SALES_V1', []); //nuevo Hook para localStorageItem
   const [updateSale, setUpdateSale] = useState({});
 

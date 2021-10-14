@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext,useState} from 'react'
 // import { Link } from 'react-router-dom';
 import '../assets/styles/components/NewSupplier.scss';
 import {UseContext} from '../../hooks/useContext'
@@ -6,6 +6,8 @@ import {UseContext} from '../../hooks/useContext'
 const NewSupplier = (props) => {
 
   const { setOpenModal, formNewSupplier, setFormNewSupplier, suppliers, saveSuppliers, addItem, generateUUID} = useContext(UseContext);
+
+  const [supplierExists,setSupplierExists]=useState(false); //setImportantNewValue]=useState(false); //state important
 
   const handleInput = (e) => { //recopilar informacion de formulario
     setFormNewSupplier({
@@ -21,9 +23,14 @@ const handleOnClick = () => {
 const handleSubmit = (e) => { // enviar informacion formulario
     e.preventDefault();
     try {
-        addItem(formNewSupplier, suppliers, saveSuppliers);
-        setFormNewSupplier({id:generateUUID()})
-        setOpenModal(false)
+        if(!suppliers.some(item => item.supplier.toLowerCase()===formNewSupplier.supplier.toLowerCase())){
+          addItem(formNewSupplier, suppliers, saveSuppliers);
+          setFormNewSupplier({id:generateUUID()});
+          setOpenModal(false)
+          setSupplierExists(false)
+        }else{
+          setSupplierExists(true)
+        }
     } catch (error) {
         console.log('error', error);
     }
@@ -45,7 +52,10 @@ const handleSubmit = (e) => { // enviar informacion formulario
             <button className='btn btn-primary' type='submit'>Guardar</button>
             <button className='btn btn-secondary' onClick = {handleOnClick}>Cerrar</button>
         </div>
-    </form>                
+      </form>                
+      <div>
+          {supplierExists && <h6>Provedor ya existe, intenta nuevamente!</h6>}
+      </div>
     </div>
   );
 };

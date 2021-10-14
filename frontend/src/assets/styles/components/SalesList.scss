@@ -83,6 +83,18 @@ border-radius: 15px;
   margin: 0;
 }
 
+.Icon2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:30px;
+  width:30px;
+  font-weight: bold;
+  padding:3px;
+  color:#fff;
+  margin: 0;
+}
+
 .Icon-delete:hover{
   color: red;
 }
@@ -97,4 +109,5 @@ border-radius: 15px;
   margin-left: 10px;
   margin-right: 10px;
 }
+
 
