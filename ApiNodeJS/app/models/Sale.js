@@ -6,10 +6,13 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             autoIncrement: true
         },
-        cantidad: DataTypes.DOUBLE,
-        subtotal: DataTypes.DOUBLE,
-        total: DataTypes.DOUBLE,
-        fechaPago: DataTypes.STRING
+        description: DataTypes.STRING,
+        finalPaymentDate: DataTypes.DATEONLY,
+        initialPaymentDate: DataTypes.DATEONLY,
+        saleQuantity: DataTypes.INTEGER,
+        saleValue: DataTypes.DOUBLE,
+        state: DataTypes.STRING,
+        totalSaleValue: DataTypes.DOUBLE
     }, {});
     Sale.associate = function(models){
         Sale.belongsTo(models.Product, { as: "product", foreignKey: "product_id"});

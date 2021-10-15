@@ -14,11 +14,11 @@ const SalesList = (props) => {
     const elementNumber = 5;
 
     const filteredSales = () => {
-        return ventas.slice(currentPage, currentPage + elementNumber)
+        return searchedSale.slice(currentPage, currentPage + elementNumber)
     }
 
     const nextPage = () => {
-        if (ventas.length > currentPage + elementNumber)
+        if (searchedSale.length > currentPage + elementNumber)
             setCurrentPage(currentPage + elementNumber);
     }
 
@@ -68,16 +68,13 @@ const SalesList = (props) => {
                                             {item.state === 'En proceso' && <td><Link className="icons" to={`/updateSale/${item.id}`}><UpdateIcon className="Icon Icon-update" onClick={() => onEdit(item.id)} /></Link></td>}
                                             {item.state === 'Completado' && <td><div className="icons"><CompletedIcon className="Icon2" onClick={() => onEdit(item.id)} /></div></td>}
                                             {item.state === 'Cancelado' && <td><div className="icons"><CancelIcon className="Icon2" onClick={() => onEdit(item.id)} /></div></td>}
-                                            <td></td>
                                             <td>{item.id}</td>
                                             {/* <td>{item.description}</td> */}
                                             {/* <td>{item.product_id}</td> */}
                                             <td>{item.hasOwnProperty('product')&&item.product.name}</td>
                                             <td>{`$${item.saleValue}`}</td>
-                                            {/* <td>{item.saleQuantity}</td> */}
-                                            <td>{item.cantidad}</td>
+                                            <td>{item.saleQuantity}</td>
                                             <td>{`$${item.totalSaleValue}`}</td>
-                                            {/* <td>{item.client}</td> */}
                                             <td>{item.hasOwnProperty('customer')&&item.customer.name}</td>
                                             <td>{item.initialPaymentDate}</td>
                                             <td>{item.finalPaymentDate}</td>

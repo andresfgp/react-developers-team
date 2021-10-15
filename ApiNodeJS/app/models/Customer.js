@@ -7,8 +7,8 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true
         },
         name: DataTypes.STRING(50),
-        telefono: DataTypes.STRING(11),
-        direccion: DataTypes.STRING(50)
+        phone: DataTypes.STRING(11),
+        address: DataTypes.STRING(50)
     }, {});
     Customer.associate = function(models) {
         Customer.hasMany(models.Sale, { as: "customer", foreignKey: "customer_id"});
