@@ -7,14 +7,13 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true
     },
     name: DataTypes.STRING,
-    valor: DataTypes.DOUBLE,
-    peso: DataTypes.FLOAT,
+    price: DataTypes.DOUBLE,
     stock: DataTypes.INTEGER,
-    descripcion: DataTypes.TEXT
+    type: DataTypes.TEXT
   }, {});
   Product.associate = function(models) {
     // associations can be defined here
-    Product.belongsTo(models.Category, { as: "category", foreignKey: "category_id" });
+    Product.belongsTo(models.Supplier, { as: "supplier", foreignKey: "supplier_id" });
     Product.hasMany(models.Sale, { as: "product", foreignKey: "product_id"});
 
   };

@@ -3,11 +3,11 @@ const router = express.Router();
 
 // Importar controladores
 const ProductController = require('../app/controllers/ProductController');
-const CategoryController = require('../app/controllers/CategoryController');
 const CustomerController = require('../app/controllers/CustomerController');
 const SalesController = require('../app/controllers/SaleController');
 const UserController = require('../app/controllers/UserController');
 const RoleController = require('../app/controllers/RoleController');
+const SupplierController = require('./controllers/SupplierController');
 
 // Products
 router.post('/productos/create', ProductController.create);
@@ -18,7 +18,7 @@ router.patch('/productos/:id', ProductController.update);
 router.delete('/productos/:id', ProductController.delete);
 
 //Categories
-router.get('/categorias', CategoryController.showAll);
+router.get('/suppliers', SupplierController.showAll);
 
 // Customers
 router.post('/clientes/create', CustomerController.create);
