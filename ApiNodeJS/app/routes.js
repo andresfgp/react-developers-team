@@ -19,6 +19,7 @@ router.delete('/productos/:id', ProductController.delete);
 
 //Categories
 router.get('/categorias', CategoryController.showAll);
+router.post('/categorias/create', CategoryController.create);
 
 // Customers
 router.post('/clientes/create', CustomerController.create);

@@ -7,4 +7,13 @@ module.exports = {
             res.json(categorias);
         })
     },
+
+    create(req, res) {
+        console.log('req', req.body);
+        Category.create(
+            req.body
+        ).then(categorias => {
+            res.json(categorias);
+        })
+    },
 }

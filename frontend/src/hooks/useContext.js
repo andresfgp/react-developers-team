@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import useLocalStorage from './useLocalStorage'
 
 const UseContext = React.createContext();
@@ -25,9 +25,10 @@ function UseProvider(props) {
 
   const [openModal, setOpenModal] = useState(false); // state Modal and function to set
 
-  const [formNewSale, setFormNewSale] = useState({ id: generateUUID()});
+  const [formNewSale, setFormNewSale] = useState({ id: generateUUID() });
   const [sales, saveSales] = useLocalStorage('SALES_V1', []); //nuevo Hook para localStorageItem
   const [updateSale, setUpdateSale] = useState({});
+  const [ventas, setVentas] = useState([]);
 
   const [formNewProduct, setFormNewProduct] = useState({ id: generateUUID() });
   const [products, saveProducts] = useLocalStorage('PRODUCTS_V1', []); //nuevo Hook para localStorageItem
@@ -35,7 +36,7 @@ function UseProvider(props) {
 
   const [formNewSupplier, setFormNewSupplier] = useState({ id: generateUUID() });
   const [suppliers, saveSuppliers] = useLocalStorage('SUPPLIERS_V1', []); //nuevo Hook para localStorageItem
-  
+
   const [searchValue, setSearchValue] = useState(''); //props input for Search
 
   let searchedSale = [];
@@ -44,24 +45,25 @@ function UseProvider(props) {
   let searchedProduct = [];
   !searchValue.length > 0 ? searchedProduct = products : searchedProduct = products.filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase())); //filter Search text
 
-  const addItem = (form,array,save) => { 
-    const newItem = [...array]; 
+  
+  const addItem = (form, array, save) => {
+    const newItem = [...array];
     newItem.push(form);
-    save(newItem) 
+    save(newItem)
   }
-  const deleteItem = (id,array,save) => { 
-    const newItem = array.filter(item => item.id !== id); 
+  const deleteItem = (id, array, save) => {
+    const newItem = array.filter(item => item.id !== id);
     save(newItem)
   }
 
-  const deleteSupplier = (supplier) => { 
-    const newItem = suppliers.filter(item => item.supplier !== supplier); 
+  const deleteSupplier = (supplier) => {
+    const newItem = suppliers.filter(item => item.supplier !== supplier);
     saveSuppliers(newItem)
   }
 
-  const updateItem = (array,save,value) => {
+  const updateItem = (array, save, value) => {
     let newItem = [...array]
-    .map((item) => ((item.id === value.id) ? item = value : item));
+      .map((item) => ((item.id === value.id) ? item = value : item));
     save(newItem)
   }
 
@@ -73,6 +75,34 @@ function UseProvider(props) {
     setUpdateProduct(searchedProduct.filter((item) => ((item.id === id)))[0]);
   }
 
+  useEffect(() => {
+    if (searchValue !== "") {
+      console.log('searchValue', searchValue);
+
+      fetch('http://localhost:5000/ventas')
+        .then(response => response.json())
+        .then(data => {
+          console.log('response', data)
+          setVentas(data);
+        }
+        ).catch((error) => {
+          console.log(error);
+        });
+
+    } else {
+
+      fetch('http://localhost:5000/ventas')
+        .then(response => response.json())
+        .then(data => {
+          console.log('response', data)
+          setVentas(data);
+        }
+        ).catch((error) => {
+          console.log(error);
+        });
+
+    }
+  }, [searchValue])
   return (
     <UseContext.Provider value={{
       searchValue,  //COMPONENT -> Search.jsx
@@ -104,6 +134,8 @@ function UseProvider(props) {
       initProductEdit, //CONTAINER ->  Products.jsx
       setFormNewSupplier, //MODAL-COMPONENT -> NewSupplier.jsx
       deleteSupplier, //CONTAINER -> NewProduct.jsx
+      ventas,//->SalesList.jsx
+      setVentas,//->SalesList.jsx
     }}>
       {children}
     </UseContext.Provider>

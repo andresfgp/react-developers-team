@@ -7,7 +7,7 @@ import { UseContext } from '../hooks/useContext'
 
 const Sales = (props) => {
 
-    const { searchedSale, deleteItem, initSaleEdit, sales, saveSales } = useContext(UseContext);
+    const { searchedSale, deleteItem, initSaleEdit, sales, saveSales,ventas, setVentas } = useContext(UseContext);
 
     const handleOnClick = (e) => {
         props.history.push('/newSale');
@@ -25,7 +25,9 @@ const Sales = (props) => {
                     deleteItem={deleteItem}
                     initSaleEdit={initSaleEdit}
                     sales={sales}
-                    saveSales={saveSales} />
+                    saveSales={saveSales}
+                    ventas={ventas}
+                    setVentas={setVentas} />
             </div>
         </>
     )
