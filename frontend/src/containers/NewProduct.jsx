@@ -31,7 +31,7 @@ const NewProduct = (props) => {
     const handleSubmit = (e) => { // enviar informacion formulario
       e.preventDefault();
       try {
-        addItem(formNewProduct, products, saveProducts);
+        addItem(formNewProduct, products, saveProducts,"productos");
         setFormNewProduct({id:generateUUID()})
         props.history.push('/products');
       } catch (error) {

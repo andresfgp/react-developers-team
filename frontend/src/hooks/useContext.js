@@ -54,10 +54,10 @@ function UseProvider(props) {
   
   const addItem = (form, array, save, option) => {
     try {
-      console.log(ventas);
       //const newItem = [...array];
       //newItem.push(form);
       save(ventas);
+      console.log(`http://localhost:5000/${option}/create`);
       fetch(`http://localhost:5000/${option}/create`, {
         method: 'POST',
         headers: {
@@ -135,9 +135,9 @@ function UseProvider(props) {
     setUpdateProduct(searchedProduct.filter((item) => ((item.id === id)))[0]);
   }
 
-  useEffect(() => {
+  useEffect((option) => {
     if (searchValue !== "") {
-      fetch('http://localhost:5000/ventas')
+      fetch(`http://localhost:5000/${option}`)
         .then(response => response.json())
         .then(data => {
           setVentas(data);
