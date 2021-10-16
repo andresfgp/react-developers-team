@@ -9,7 +9,7 @@ import { ReactComponent as CancelIcon } from '../assets/static/cancel.svg';
 
 const SalesList = (props) => {
 
-    const { searchedSale, deleteItem, initSaleEdit, sales, saveSales } = props;
+    const { searchedSale, deleteItem, initSaleEdit, sales, saveSales} = props;
     const [currentPage, setCurrentPage] = useState(0)
     const elementNumber = 5;
 

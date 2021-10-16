@@ -11,12 +11,13 @@ const SupplierController = require('./controllers/SupplierController');
 const User = require('./models/User');
 
 // Products
+
 router.post('/productos/create', ProductController.create);
 router.get('/productos/getByName/:name', ProductController.showByKeyWord);
 router.get('/productos', ProductController.showAll);
 router.get('/productos/:id', ProductController.showById);
-router.patch('/productos/:id', ProductController.update);
-router.delete('/productos/:id', ProductController.delete);
+router.post('/productos/u/:id', ProductController.update);
+router.delete('/productos/d/:id', ProductController.delete);
 
 // Customers
 router.post('/clientes/create', CustomerController.create);

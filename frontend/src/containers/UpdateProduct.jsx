@@ -28,7 +28,7 @@ const UpdateProduct = (props) => {
     };
     const handleEdit = (e) => {
         e.preventDefault();
-        updateItem(products,saveProducts,updateProduct);
+        updateItem(products,saveProducts,updateProduct,"productos");
         props.history.push('/products'); 
        }
     

@@ -33,6 +33,7 @@ function UseProvider(props) {
   const [formNewProduct, setFormNewProduct] = useState({ id: generateUUID() });
   const [products, saveProducts] = useLocalStorage('PRODUCTS_V1', []); //nuevo Hook para localStorageItem
   const [updateProduct, setUpdateProduct] = useState({});
+  const [productos, setProductos] = useState([]);
 
   const [formNewSupplier, setFormNewSupplier] = useState({ id: generateUUID() });
   const [suppliers, saveSuppliers] = useLocalStorage('SUPPLIERS_V1', []); //nuevo Hook para localStorageItem
@@ -51,13 +52,13 @@ function UseProvider(props) {
   //   newItem.push(form);
   //   save(newItem)
   // }
-  
+
   const addItem = (form, array, save, option) => {
     try {
-      //const newItem = [...array];
-      //newItem.push(form);
-      save(ventas);
-      console.log(`http://localhost:5000/${option}/create`);
+      const newItem = [...array];
+      newItem.push(form);
+      save(newItem);
+      console.log('oppppppp',option);
       fetch(`http://localhost:5000/${option}/create`, {
         method: 'POST',
         headers: {
@@ -66,6 +67,7 @@ function UseProvider(props) {
         },
         body: JSON.stringify(form)
       });
+      console.log(ventas);
     } catch (error) {
       console.log('error', error);
     }
@@ -78,9 +80,8 @@ function UseProvider(props) {
   // }
 
   const deleteItem = (id, array, save, option) => {
-    //const newItem = array.filter(item => item.id !== id);
-    //save(newItem)
-    save(ventas)
+    const newItem = array.filter(item => item.id !== id);
+    save(newItem)
     fetch(`http://localhost:5000/${option}/d/${id}`,
       {
         method: 'DELETE',
@@ -104,9 +105,9 @@ function UseProvider(props) {
 
   const updateItem = (array, save, value, option) => {
     try {
-      //let newItem = [...array]
-      //  .map((item) => ((item.id === value.id) ? item = value : item));
-      save(ventas)
+      let newItem = [...array]
+        .map((item) => ((item.id === value.id) ? item = value : item));
+      save(newItem)
       fetch(`http://localhost:5000/${option}/u/${value.id}`, {
         method: 'POST',
         headers: {
@@ -131,13 +132,19 @@ function UseProvider(props) {
 
   }
 
-  const initProductEdit = (id) => {
+  const initProductEdit = (id,option) => {
     setUpdateProduct(searchedProduct.filter((item) => ((item.id === id)))[0]);
+    fetch(`http://localhost:5000/${option}/${id}`)
+    .then(response => response.json())
+    .then(data => { setUpdateSale(data); }
+    ).catch((error) => {
+      console.log(error);
+    });
   }
 
-  useEffect((option) => {
+  useEffect(() => {
     if (searchValue !== "") {
-      fetch(`http://localhost:5000/${option}`)
+      fetch('http://localhost:5000/ventas')
         .then(response => response.json())
         .then(data => {
           setVentas(data);
@@ -151,7 +158,36 @@ function UseProvider(props) {
       fetch('http://localhost:5000/ventas')
         .then(response => response.json())
         .then(data => {
+
           setVentas(data);
+        }
+        ).catch((error) => {
+          console.log(error);
+        });
+
+    }
+  }, [searchValue])
+
+
+  useEffect(() => {
+    if (searchValue !== "") {
+      fetch('http://localhost:5000/productos')
+        .then(response => response.json())
+        .then(data => {
+          setProductos(data);
+        }
+        ).catch((error) => {
+          console.log(error);
+        });
+
+    } else {
+
+      fetch('http://localhost:5000/productos')
+        .then(response => response.json())
+        .then(data => {
+
+
+          setProductos(data);
         }
         ).catch((error) => {
           console.log(error);
@@ -190,6 +226,7 @@ function UseProvider(props) {
       initProductEdit, //CONTAINER ->  Products.jsx
       setFormNewSupplier, //MODAL-COMPONENT -> NewSupplier.jsx
       deleteSupplier, //CONTAINER -> NewProduct.jsx
+      ventas,
     }}>
       {children}
     </UseContext.Provider>

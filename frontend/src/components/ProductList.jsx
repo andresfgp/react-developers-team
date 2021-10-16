@@ -28,11 +28,11 @@ const ProductList = (props) => {
     }
 
     const onDelete = (id) => {
-        deleteItem(id,products, saveProducts);
+        deleteItem(id,products, saveProducts,"productos");
     }
 
     const onEdit = (id) => {
-        initProductEdit(id);
+        initProductEdit(id,"producto");
     }
 
     return (
