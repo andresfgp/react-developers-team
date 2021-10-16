@@ -7,8 +7,9 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true
         },
         name: DataTypes.STRING,
-        usuario: DataTypes.STRING,
+        username: DataTypes.STRING,
         password: DataTypes.STRING,
+        status: DataTypes.STRING
     },{});
     User.associate = function(models) {
         User.hasMany(models.Sale, { as: "user", foreignKey: "user_id"});

@@ -8,6 +8,7 @@ const SalesController = require('../app/controllers/SaleController');
 const UserController = require('../app/controllers/UserController');
 const RoleController = require('../app/controllers/RoleController');
 const SupplierController = require('./controllers/SupplierController');
+const User = require('./models/User');
 
 // Products
 router.post('/productos/create', ProductController.create);
@@ -37,6 +38,7 @@ router.get('/usuarios', UserController.showAll);
 router.get('/usuarios/:id', UserController.showById);
 router.patch('/usuarios/:id', UserController.update);
 router.delete('/usuarios/:id', UserController.delete);
+router.post('/login', UserController.login);
 
 // Roles 
 router.get('/roles', RoleController.showAll);
