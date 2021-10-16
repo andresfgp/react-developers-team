@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
+//Importar Middlewares
+const middleware = require('../config/middleware');
+
 // Importar controladores
 const ProductController = require('../app/controllers/ProductController');
 const CustomerController = require('../app/controllers/CustomerController');
@@ -14,7 +17,7 @@ const User = require('./models/User');
 
 router.post('/productos/create', ProductController.create);
 router.get('/productos/getByName/:name', ProductController.showByKeyWord);
-router.get('/productos', ProductController.showAll);
+router.get('/productos', middleware.checkToken, ProductController.showAll);
 router.get('/productos/:id', ProductController.showById);
 router.post('/productos/u/:id', ProductController.update);
 router.delete('/productos/d/:id', ProductController.delete);

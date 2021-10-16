@@ -28,7 +28,12 @@ module.exports = {
 
 
     showAll(req, res) {
-        Product.findAll({ include: 'category' }).then(productos => {
+        console.log(req.role_id);
+        if(req.role_id != 1 && req.status != "Aprobado"){
+            res.json({ error: "No tienes permisos suficientes para este recurso."})
+        }
+
+        Product.findAll({ include: 'supplier' }).then(productos => {
             res.json(productos);
         })
     },
