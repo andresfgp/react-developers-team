@@ -28,8 +28,8 @@ router.delete('/clientes/:id', CustomerController.delete);
 router.post('/ventas/create', SalesController.create);
 router.get('/ventas', SalesController.showAll);
 router.get('/ventas/:id', SalesController.showById);
-router.patch('/ventas/:id', SalesController.update);
-router.delete('/ventas/:id', SalesController.delete);
+router.post('/ventas/u/:id', SalesController.update);
+router.delete('/ventas/d/:id', SalesController.delete);
 
 // Users
 router.post('/usuarios/create', UserController.create);

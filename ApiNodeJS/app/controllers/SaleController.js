@@ -3,7 +3,6 @@ const Sequelize = require('sequelize');
 
 module.exports = {
     create(req, res) {
-        console.log('req', req.body);
         Sale.create(
             req.body
         ).then(ventas => {
@@ -19,15 +18,24 @@ module.exports = {
 
 
     showById(req, res) {
-        Sale.findByPk(req.params.id).then(ventas => {
+        Sale.findByPk(req.params.id,{ include: ['product', 'user', 'customer'] }).then(ventas => {
             res.json(ventas);
         })
-    },
+     },
 
     update(req, res) {
-
         Sale.update({
-            name: req.body.name
+            description: req.body.description,
+            finalPaymentDate: req.body.finalPaymentDate,
+            initialPaymentDate: req.body.initialPaymentDate,
+            saleQuantity: req.body.saleQuantity,
+            saleValue: req.body.saleValue,
+            state: req.body.state,
+            totalSaleValue: req.body.saleValue * req.body.saleQuantity,
+            customer_id: req.body.customer_id,
+            product_id: req.body.product_id,
+            user_id: req.body.user_id,
+            client: req.body.client
         }, {
             where: {
                 id: req.params.id

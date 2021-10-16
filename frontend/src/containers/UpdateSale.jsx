@@ -15,11 +15,12 @@ const UpdateSale = (props) => {
             [e.target.name]: e.target.value,
         });
     };
-    
+
     const handleEdit = (e) => {
         e.preventDefault();
-        updateItem(sales,saveSales,updateSale);
-        props.history.push('/sales'); 
+        updateItem(sales,saveSales,updateSale,"ventas");
+        //updateItem(updateSale);
+        props.history.push('/sales');
     }
 
     return (
@@ -71,7 +72,7 @@ const UpdateSale = (props) => {
                                             name="saleQuantity"
                                             type="number"
                                             onChange={handleInput}
-                                            className = "form-control"
+                                            className="form-control"
                                             defaultValue={updateSale.saleQuantity}
                                             required />
                                     </div>
@@ -114,15 +115,15 @@ const UpdateSale = (props) => {
                                         <div className='col__saleManager-select'>
                                             <select
                                                 className="form-select"
-                                                name='saleManager'
+                                                name='user_id'
                                                 onChange={handleInput}
                                                 required
-                                                defaultValue={updateSale.saleManager}>
-                                                <option value="Andrés García">Andrés García</option>
-                                                <option value="Brayan Padilla">Brayan Padilla</option>
-                                                <option value="Juan Sebastián">Juan Sebastián</option>
-                                                <option value="Norberto Medina">Norberto Medina</option>
-                                                <option value="Francisco Javier">Francisco Javier</option>
+                                                defaultValue={updateSale.hasOwnProperty('user') && updateSale.user.id}>
+                                                <option value="3">Andrés García</option>
+                                                <option value="4">Brayan Padilla</option>
+                                                <option value="2">Juan Sebastián</option>
+                                                <option value="5">Norberto Medina</option>
+                                                <option value="6">Francisco Javier</option>
                                             </select>
                                         </div>
                                     </div>
@@ -131,7 +132,7 @@ const UpdateSale = (props) => {
                                     </div>
                                     <div className='col__saleManager'>
                                         <div className="form-check form-check-inline">
-                                            <input className="form-check-input" type="radio" name="state" onChange={handleInput} value="Completado"/>
+                                            <input className="form-check-input" type="radio" name="state" onChange={handleInput} value="Completado" />
                                             <label className="form-check-label">Completado</label>
                                         </div>
                                         <div className="form-check form-check-inline">

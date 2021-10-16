@@ -9,7 +9,7 @@ import { ReactComponent as CancelIcon } from '../assets/static/cancel.svg';
 
 const SalesList = (props) => {
 
-    const { searchedSale, deleteItem, initSaleEdit, sales, saveSales, ventas, setVentas } = props;
+    const { searchedSale, deleteItem, initSaleEdit, sales, saveSales } = props;
     const [currentPage, setCurrentPage] = useState(0)
     const elementNumber = 5;
 
@@ -28,14 +28,14 @@ const SalesList = (props) => {
     }
 
     const onDelete = (id) => {
-        deleteItem(id, sales, saveSales);
+        deleteItem(id, sales, saveSales,"ventas");
+        // deleteItem(id);
     }
 
     const onEdit = (id) => {
-        initSaleEdit(id);
+        initSaleEdit(id,"ventas");
     }
-
-
+    //location.reload();
     return (
         <>
             <section className='saleslist'>
@@ -69,17 +69,19 @@ const SalesList = (props) => {
                                             {item.state === 'Completado' && <td><div className="icons"><CompletedIcon className="Icon2" onClick={() => onEdit(item.id)} /></div></td>}
                                             {item.state === 'Cancelado' && <td><div className="icons"><CancelIcon className="Icon2" onClick={() => onEdit(item.id)} /></div></td>}
                                             <td>{item.id}</td>
-                                            {/* <td>{item.description}</td> */}
+                                            <td>{item.description}</td>
                                             {/* <td>{item.product_id}</td> */}
-                                            <td>{item.hasOwnProperty('product')&&item.product.name}</td>
+
+                                            {/* <td>{item.hasOwnProperty('product')&&item.product.name}</td> */}
                                             <td>{`$${item.saleValue}`}</td>
                                             <td>{item.saleQuantity}</td>
                                             <td>{`$${item.totalSaleValue}`}</td>
-                                            <td>{item.hasOwnProperty('customer')&&item.customer.name}</td>
+                                            <td></td>
+                                            {/* <td>{item.hasOwnProperty('customer')&&item.customer.name}</td> */}
                                             <td>{item.initialPaymentDate}</td>
                                             <td>{item.finalPaymentDate}</td>
                                             {/* <td>{item.saleManager}</td> */}
-                                            <td>{item.hasOwnProperty('user')&&item.user.name}</td>
+                                            <td>{item.hasOwnProperty('user') && item.user.name}</td>
                                         </tr>
                                     );
                                 })

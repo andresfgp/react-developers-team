@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         saleQuantity: DataTypes.INTEGER,
         saleValue: DataTypes.DOUBLE,
         state: DataTypes.STRING,
-        totalSaleValue: DataTypes.DOUBLE
+        totalSaleValue: DataTypes.DOUBLE,
     }, {});
     Sale.associate = function(models){
         Sale.belongsTo(models.Product, { as: "product", foreignKey: "product_id"});

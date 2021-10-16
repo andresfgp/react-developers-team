@@ -36,7 +36,8 @@ const NewSale = (props) => {
       e.preventDefault();
       try {
         formNewSale.state=initState;
-        addItem(formNewSale,sales, saveSales);
+        addItem(formNewSale,sales, saveSales,"ventas");
+        // addItem(formNewSale,"ventas");
         setFormNewSale({id:generateUUID()})
         props.history.push('/sales');
         // setOpenModal(true)
@@ -130,15 +131,15 @@ const NewSale = (props) => {
                                         <div className='col__saleManager-select'>
                                             <select 
                                                 className="form-select"
-                                                name='saleManager'
+                                                name='user_id'
                                                 onChange={handleInput}
                                                 required>
                                                 <option value=''>Seleccionar responsable venta</option>
-                                                <option value="Andrés García">Andrés García</option>
-                                                <option value="Brayan Padilla">Brayan Padilla</option>
-                                                <option value="Juan Sebastián">Juan Sebastián</option>
-                                                <option value="Norberto Medina">Norberto Medina</option>
-                                                <option value="Francisco Javier">Francisco Javier</option>
+                                                <option value="3">Andrés García</option>
+                                                <option value="4">Brayan Padilla</option>
+                                                <option value="2">Juan Sebastián</option>
+                                                <option value="5">Norberto Medina</option>
+                                                <option value="6">Francisco Javier</option>
                                             </select>
                                         </div>
                                     </div>
