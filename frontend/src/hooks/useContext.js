@@ -51,12 +51,13 @@ function UseProvider(props) {
   //   newItem.push(form);
   //   save(newItem)
   // }
-
+  
   const addItem = (form, array, save, option) => {
     try {
-      const newItem = [...array];
-      newItem.push(form);
-      save(newItem);
+      console.log(ventas);
+      //const newItem = [...array];
+      //newItem.push(form);
+      save(ventas);
       fetch(`http://localhost:5000/${option}/create`, {
         method: 'POST',
         headers: {
@@ -77,8 +78,9 @@ function UseProvider(props) {
   // }
 
   const deleteItem = (id, array, save, option) => {
-    const newItem = array.filter(item => item.id !== id);
-    save(newItem)
+    //const newItem = array.filter(item => item.id !== id);
+    //save(newItem)
+    save(ventas)
     fetch(`http://localhost:5000/${option}/d/${id}`,
       {
         method: 'DELETE',
@@ -100,11 +102,11 @@ function UseProvider(props) {
   //   save(newItem)
   // }
 
-  const updateItem = (array, save, value,option) => {
+  const updateItem = (array, save, value, option) => {
     try {
-      let newItem = [...array]
-        .map((item) => ((item.id === value.id) ? item = value : item));
-      save(newItem)
+      //let newItem = [...array]
+      //  .map((item) => ((item.id === value.id) ? item = value : item));
+      save(ventas)
       fetch(`http://localhost:5000/${option}/u/${value.id}`, {
         method: 'POST',
         headers: {
@@ -188,7 +190,6 @@ function UseProvider(props) {
       initProductEdit, //CONTAINER ->  Products.jsx
       setFormNewSupplier, //MODAL-COMPONENT -> NewSupplier.jsx
       deleteSupplier, //CONTAINER -> NewProduct.jsx
-      ventas,
     }}>
       {children}
     </UseContext.Provider>
