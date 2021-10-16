@@ -8,6 +8,8 @@ const jwt = require('jwt-simple');
 const createToken = (user) =>{
     const payload = {
         user_id: user.id,
+        user_role: user.role_id,
+        user_status: user.status,
         created_at: moment().unix(),
         expired_at: moment().add(15, 'minutes').unix()
     }
