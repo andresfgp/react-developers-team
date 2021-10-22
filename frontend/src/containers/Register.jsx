@@ -52,7 +52,7 @@ const Register = (props) => {
               onChange={handleInput}
             />
             <select 
-              className="form-select"
+              className="form__select"
               name='user'
               onChange={handleInput}>
               <option defaultValue>Seleccionar tipo de usuario</option>
