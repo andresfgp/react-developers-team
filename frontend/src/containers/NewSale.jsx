@@ -39,7 +39,7 @@ const NewSale = (props) => {
         addItem(formNewSale,sales, saveSales,"ventas");
         // addItem(formNewSale,"ventas");
         setFormNewSale({id:generateUUID()})
-        props.history.push('/sales');
+        props.history.push('/');
         // setOpenModal(true)
       } catch (error) {
         console.log('error', error);

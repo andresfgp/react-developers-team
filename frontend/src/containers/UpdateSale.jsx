@@ -20,7 +20,7 @@ const UpdateSale = (props) => {
         e.preventDefault();
         updateItem(sales,saveSales,updateSale,"ventas");
         //updateItem(updateSale);
-        props.history.push('/sales');
+        props.history.push('/');
     }
 
     return (
