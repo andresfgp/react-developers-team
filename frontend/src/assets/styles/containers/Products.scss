@@ -1,0 +1,37 @@
+.products__container-btn>button{
+    background-color: #61DBFB;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 50px;
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    font-weight: bold;
+    color: white;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    text-align: center;
+    height: 64px;
+    width: 64px;
+  
+
+    transform: rotate(0);
+    transition: .3s ease;
+}
+
+.products__container-btn>button:hover{
+    transform: rotate(360deg);
+    background-color: #FAFAFA;
+    color: #61DBFB;
+  }
+
+
+h1{
+    color: white;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
