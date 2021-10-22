@@ -227,6 +227,7 @@ function UseProvider(props) {
       setFormNewSupplier, //MODAL-COMPONENT -> NewSupplier.jsx
       deleteSupplier, //CONTAINER -> NewProduct.jsx
       ventas,
+      productos,
     }}>
       {children}
     </UseContext.Provider>
