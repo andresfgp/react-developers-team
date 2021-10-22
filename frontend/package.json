@@ -54,6 +54,5 @@
     "webpac": "0.0.1-security",
     "webpack": "^4.44.2",
     "gh-pages": "^3.2.3"
-  },
-  "homepage":"https://andresfgp.github.io/equipoDevelopers/frontend"
+  }
 }
