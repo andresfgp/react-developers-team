@@ -130,7 +130,7 @@ const NewSale = (props) => {
                                     <div className='col__saleManager'>
                                         <div className='col__saleManager-select'>
                                             <select 
-                                                className="form-select"
+                                                className="form__select"
                                                 name='user_id'
                                                 onChange={handleInput}
                                                 required>

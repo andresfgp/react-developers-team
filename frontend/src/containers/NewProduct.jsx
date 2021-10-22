@@ -107,7 +107,7 @@ const NewProduct = (props) => {
                                     <div className='col__productManager'>
                                         <div className='col__productManager-select'>
                                             <select 
-                                                className="form-select"
+                                                className="form__select"
                                                 name='supplier'
                                                 onChange={handleInput}
                                                 required>
