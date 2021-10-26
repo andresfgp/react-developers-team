@@ -59,7 +59,7 @@ function UseProvider(props) {
       newItem.push(form);
       save(newItem);
       console.log('oppppppp',option);
-      fetch(`http://localhost:5000/${option}/create`, {
+      fetch(`http://137.184.137.28:5000/${option}/create`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -82,7 +82,7 @@ function UseProvider(props) {
   const deleteItem = (id, array, save, option) => {
     const newItem = array.filter(item => item.id !== id);
     save(newItem)
-    fetch(`http://localhost:5000/${option}/d/${id}`,
+    fetch(`http://137.184.137.28:5000/${option}/d/${id}`,
       {
         method: 'DELETE',
       })
@@ -108,7 +108,7 @@ function UseProvider(props) {
       let newItem = [...array]
         .map((item) => ((item.id === value.id) ? item = value : item));
       save(newItem)
-      fetch(`http://localhost:5000/${option}/u/${value.id}`, {
+      fetch(`http://137.184.137.28:5000/${option}/u/${value.id}`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -123,7 +123,7 @@ function UseProvider(props) {
 
   const initSaleEdit = (id, option) => {
     setUpdateSale(searchedSale.filter((item) => ((item.id === id)))[0]);
-    fetch(`http://localhost:5000/${option}/${id}`)
+    fetch(`http://137.184.137.28:5000/${option}/${id}`)
       .then(response => response.json())
       .then(data => { setUpdateSale(data); }
       ).catch((error) => {
@@ -134,7 +134,7 @@ function UseProvider(props) {
 
   const initProductEdit = (id,option) => {
     setUpdateProduct(searchedProduct.filter((item) => ((item.id === id)))[0]);
-    fetch(`http://localhost:5000/${option}/${id}`)
+    fetch(`http://137.184.137.28:5000/${option}/${id}`)
     .then(response => response.json())
     .then(data => { setUpdateSale(data); }
     ).catch((error) => {
@@ -144,7 +144,7 @@ function UseProvider(props) {
 
   useEffect(() => {
     if (searchValue !== "") {
-      fetch('http://localhost:5000/ventas')
+      fetch('http://137.184.137.28:5000/ventas')
         .then(response => response.json())
         .then(data => {
           setVentas(data);
@@ -155,7 +155,7 @@ function UseProvider(props) {
 
     } else {
 
-      fetch('http://localhost:5000/ventas')
+      fetch('http://137.184.137.28:5000/ventas')
         .then(response => response.json())
         .then(data => {
 
@@ -171,7 +171,7 @@ function UseProvider(props) {
 
   useEffect(() => {
     if (searchValue !== "") {
-      fetch('http://localhost:5000/productos')
+      fetch('http://137.184.137.28:5000/productos')
         .then(response => response.json())
         .then(data => {
           setProductos(data);
@@ -182,7 +182,7 @@ function UseProvider(props) {
 
     } else {
 
-      fetch('http://localhost:5000/productos')
+      fetch('http://137.184.137.28:5000/productos')
         .then(response => response.json())
         .then(data => {
 
