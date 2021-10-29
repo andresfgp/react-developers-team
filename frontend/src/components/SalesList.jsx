@@ -76,12 +76,12 @@ const SalesList = (props) => {
                                             <td>{`$${item.saleValue}`}</td>
                                             <td>{item.saleQuantity}</td>
                                             <td>{`$${item.totalSaleValue}`}</td>
-                                            <td></td>
+                                            <td>{item.customer}</td>
                                             {/* <td>{item.hasOwnProperty('customer')&&item.customer.name}</td> */}
                                             <td>{item.initialPaymentDate}</td>
                                             <td>{item.finalPaymentDate}</td>
-                                            {/* <td>{item.saleManager}</td> */}
-                                            <td>{item.hasOwnProperty('user') && item.user.name}</td>
+                                            <td>{item.saleManager}</td>
+                                            {/* <td>{item.hasOwnProperty('user') && item.user.name}</td> */}
                                         </tr>
                                     );
                                 })
