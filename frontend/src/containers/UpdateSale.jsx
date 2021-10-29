@@ -114,16 +114,13 @@ const UpdateSale = (props) => {
                                     <div className='col__saleManager'>
                                         <div className='col__saleManager-select'>
                                             <select
-                                                className="form-select"
-                                                name='user_id'
+                                                className="form__select"
+                                                name='saleManager'
                                                 onChange={handleInput}
                                                 required
                                                 defaultValue={updateSale.hasOwnProperty('user') && updateSale.user.id}>
-                                                <option value="3">Andrés García</option>
-                                                <option value="4">Brayan Padilla</option>
-                                                <option value="2">Juan Sebastián</option>
-                                                <option value="5">Norberto Medina</option>
-                                                <option value="6">Francisco Javier</option>
+                                                <option value="Katherin Gómez">Katherin Gómez</option>
+                                                <option value="Jackeline Gómez">Jackeline Gómez</option>
                                             </select>
                                         </div>
                                     </div>

@@ -100,7 +100,7 @@ const NewSale = (props) => {
                                         <input
                                             onChange={handleInput}
                                             type='text'
-                                            name='customer'
+                                            name='client'
                                             className='form-control'
                                             required
                                         />
